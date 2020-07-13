@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { IconContext } from "react-icons";
-import { FiHome, FiMessageSquare, FiHelpCircle, FiColumns } from "react-icons/fi";
+import { FiMessageSquare, FiHelpCircle, FiColumns } from "react-icons/fi";
 import "./style.scss"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";

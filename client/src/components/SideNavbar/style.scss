@@ -2,9 +2,9 @@
 .nav {
   padding: 15px;
   position: fixed;
-  left:0;
-  top:60px;
-  bottom:0;
+  left: 0;
+  top: 60px;
+  bottom: 0;
   z-index: 1000;
   display: block;
   width: 70px;
@@ -13,21 +13,41 @@
   -webkit-box-shadow: 4px 0px 4px -2px rgba(230, 230, 230, 0.5);
   -moz-box-shadow: 4px 0px 4px -2px rgba(230, 230, 230, 0.5);
   box-shadow: 4px 0px 4px -2px rgba(230, 230, 230, 0.5);
+  .nav-item {
+    .nav-link {
+      color: #a1a8bf;
+      border-radius: 4px;
+      padding: 4px;
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+      &.active, &:hover {
+        color: #663399;
+      }
+    }
+  }
 }
 
-.nav .nav-item .nav-link{
-  color: #a1a8bf;
-  border-radius: 4px;
-  padding:4px;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
+.theme-red {
+  .nav {
+    .nav-item {
+      .nav-link {
+        &.active, &:hover {
+          color: #99251d;
+        }
+      }
+    }
+  }
 }
 
-.nav .nav-item .nav-link:hover{
-  color: #663399;
-}
-
-.nav .nav-item .nav-link.active{
-  color: #663399;
+.theme-blue {
+  .nav {
+    .nav-item {
+      .nav-link {
+        &.active, &:hover {
+          color: #275899;
+        }
+      }
+    }
+  }
 }
 

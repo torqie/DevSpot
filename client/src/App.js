@@ -12,7 +12,19 @@ const {Component} = require("react");
 
 class App extends Component {
   state = {
+    theme: 'default'
+  };
 
+  componentDidMount() {
+    document.body.classList.add('theme-default');
+    this.updateTheme('blue')
+  }
+
+  updateTheme = theme => {
+    const currentTheme = 'theme-'+this.state.theme;
+    const newTheme = 'theme-' + theme;
+    document.body.classList.remove(currentTheme);
+    document.body.classList.add(newTheme);
   };
 
   render() {
