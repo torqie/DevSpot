@@ -1,26 +1,29 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import "./App.css";
-import Navbar from "./components/Navbar"
+import TopNavbar from "./components/TopNavbar";
+import SideNavbar from "./components/SideNavbar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import AppRoute from "./AppRoute";
+import MainLayout from "./layouts/main";
+import AuthLayout from "./layouts/auth";
+import React from "react";
 
-// Page Imports
-import Home from "./pages/Home"
-import Profile from "./pages/Profile"
+const {Component} = require("react");
 
 class App extends Component {
+  state = {
+
+  };
+
   render() {
     return (
-      <Router>
-        <Navbar />
-        {/* This is where the pages will render */}
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/profile" component={Profile} />
-        </Switch>
-        {/*  END PAGES*/}
-      </Router>
+        <Router>
+          <AppRoute exact path="/" component={Home} layout={MainLayout} />
+          <AppRoute exact path="/profile" component={Profile} layout={MainLayout} />
+        </Router>
     );
   }
 }
 
 export default App;
+

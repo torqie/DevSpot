@@ -1,0 +1,33 @@
+
+.nav {
+  padding: 15px;
+  position: fixed;
+  left:0;
+  top:60px;
+  bottom:0;
+  z-index: 1000;
+  display: block;
+  width: 70px;
+  background-color: #ffffff;
+  border-right: 1px solid #eeeeee;
+  -webkit-box-shadow: 4px 0px 4px -2px rgba(230, 230, 230, 0.5);
+  -moz-box-shadow: 4px 0px 4px -2px rgba(230, 230, 230, 0.5);
+  box-shadow: 4px 0px 4px -2px rgba(230, 230, 230, 0.5);
+}
+
+.nav .nav-item .nav-link{
+  color: #a1a8bf;
+  border-radius: 4px;
+  padding:4px;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.nav .nav-item .nav-link:hover{
+  color: #663399;
+}
+
+.nav .nav-item .nav-link.active{
+  color: #663399;
+}
+
