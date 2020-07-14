@@ -1,6 +1,5 @@
-import TopNavbar from "./components/TopNavbar";
-import SideNavbar from "./components/SideNavbar";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import { BrowserRouter as Router } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import AppRoute from "./AppRoute";
@@ -17,7 +16,7 @@ class App extends Component {
 
   componentDidMount() {
     document.body.classList.add('theme-default');
-    this.updateTheme('blue')
+    this.updateTheme('default')
   }
 
   updateTheme = theme => {

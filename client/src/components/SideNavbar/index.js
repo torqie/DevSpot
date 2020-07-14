@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { IconContext } from "react-icons";
-import { FiMessageSquare, FiHelpCircle, FiColumns } from "react-icons/fi";
+import { FaStream, FaQuestionCircle, FaUser } from "react-icons/fa";
 import "./style.scss"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
@@ -18,7 +18,7 @@ function SideNavbar() {
                     placement="right"
                     overlay={<Tooltip id='tooltip-newsfeed'>News Feed</Tooltip>}
                 >
-                  <FiColumns />
+                  <FaStream />
                 </OverlayTrigger>
 
               </NavLink>
@@ -30,7 +30,7 @@ function SideNavbar() {
                       placement="right"
                       overlay={<Tooltip id='tooltip-profile'>Profile</Tooltip>}
                   >
-                    <FiMessageSquare />
+                    <FaUser />
                   </OverlayTrigger>
                 </NavLink>
               </li>
@@ -41,7 +41,7 @@ function SideNavbar() {
                       placement="right"
                       overlay={<Tooltip id='tooltip-questions'>Questions</Tooltip>}
                   >
-                    <FiHelpCircle />
+                    <FaQuestionCircle />
                   </OverlayTrigger>
                 </NavLink>
               </li>

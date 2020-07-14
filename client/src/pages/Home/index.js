@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import ThemeSwitcher from "../../components/ThemeSwitcher";
 
 class Home extends Component {
   render() {
