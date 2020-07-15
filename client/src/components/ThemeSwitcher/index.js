@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { FaStream, FaSwatchbook } from "react-icons/fa";
+import { FaSwatchbook } from "react-icons/fa";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 

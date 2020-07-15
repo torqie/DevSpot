@@ -7,9 +7,6 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(`${__dirname}/../config/database.json`)[env];
 const db = {};
 
-if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
-} else {
   var sequelize = new Sequelize(
       config.database,
       config.username,
@@ -20,11 +17,10 @@ if (config.use_env_variable) {
           collate: 'utf8_general_ci',
           timestamps: true,
         },
-        port: config.port || 3306,
+        port: config.port || 3307,
         dialect: config.dialect,
       },
   );
-}
 
 fs.readdirSync(__dirname)
     .filter((file) => (

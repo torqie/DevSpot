@@ -5,18 +5,27 @@ const session = require('express-session');
 const passport = require('passport');
 const path = require("path");
 const db = require("./models");
+const cors = require('cors');
 
-const PORT = process.env.PORT || 3001;
 const app = express();
+const PORT = process.env.PORT || 3001;
+
 
 // Define middleware here
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+app.use(
+    cors({
+      origin: "http://localhost:3000", // allow to server to accept request from different origin
+      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+      credentials: true // allow session cookie from browser to pass through
+    })
+);
 
 // Passport.js Authentication
 app.use(session({ secret: 'tmNabHUTjPyAiJIIXlHOZLVNGM' }));
@@ -31,9 +40,10 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user, done) => {
   done(null, user);
 });
+
+
 // Define API routes here
 require('./routes/AuthRoutes')(app, passport);
-
 //Mysql Server
 const syncOptions = { force: false };
 

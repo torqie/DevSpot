@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import axios from 'axios';
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -10,27 +7,13 @@ import Button from "react-bootstrap/Button";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const history = useHistory();
+
 
   const handleEmailOnChange = event => {
     setEmail(event.target.value);
   };
   const handlePasswordOnChange = event => {
     setPassword(event.target.value);
-  };
-
-  const handleFormSubmit = event => {
-    event.preventDefault();
-    alert("made it");
-    history.push("/news-feed");
-
-    axios.get('/api/auth/github/login').then(results => {
-
-      console.log(results);
-      history.push("/news-feed");
-    }).catch(error => {
-      console.log(error);
-    });
   };
 
   return (
@@ -44,9 +27,12 @@ const LoginForm = () => {
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" placeholder="Password" value={password} onChange={handlePasswordOnChange}/>
       </Form.Group>
-      <Button onClick={handleFormSubmit} variant="primary" type="submit">
-        Login
-      </Button>
+      <a href="http://localhost:3001/api/auth/github">
+        <Button
+            label={'Login with LinkedIn'}
+            width={'100%'}
+            height={50} />
+      </a>
     </Form>
   );
 
