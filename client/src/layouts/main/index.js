@@ -5,13 +5,13 @@ function MainLayout({children}) {
   return (
       <>
       <TopNavbar/>
-      <div className="container-fluid">
+      <div className="container-fluid pl-5">
       <div className="row">
       <div className="col-2 col-sm-1">
-      <SideNavbar />
+        <SideNavbar />
       </div>
 
-  <div className="col-7 col-sm-8">
+  <div className="col-8 col-sm-10 mt-5">
     <section id="main">
       <div className="row">
         <div className="col-12 ">
@@ -20,10 +20,7 @@ function MainLayout({children}) {
       </div>
     </section>
   </div>
-
-  <div className="col-3">
-
-      </div>
+  <div className="col-2 col-1"/>
 </div>
 
 

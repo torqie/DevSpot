@@ -32,7 +32,7 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 // Define API routes here
-
+require('./routes/AuthRoutes')(app, passport);
 
 //Mysql Server
 const syncOptions = { force: false };

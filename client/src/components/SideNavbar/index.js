@@ -12,7 +12,7 @@ function SideNavbar() {
         <IconContext.Provider value={{size: "1.6rem"}}>
           <ul className="nav flex-column align-items-center">
             <li className="nav-item">
-              <NavLink className="nav-link" exact={true} activeClassName="active" to={"/"}>
+              <NavLink className="nav-link" exact={true} activeClassName="active" to={"/news-feed"}>
                 <OverlayTrigger
                     key="newsfeed"
                     placement="right"

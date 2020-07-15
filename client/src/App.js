@@ -2,6 +2,7 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import LoginForm from "./components/forms/auth/login.form";
 import AppRoute from "./AppRoute";
 import MainLayout from "./layouts/main";
 import AuthLayout from "./layouts/auth";
@@ -29,7 +30,9 @@ class App extends Component {
   render() {
     return (
         <Router>
-          <AppRoute exact path="/" component={Home} layout={MainLayout} />
+
+          <AppRoute exact path="/" component={LoginForm} layout={AuthLayout} />
+          <AppRoute exact path="/news-feed" component={Home} layout={MainLayout} />
           <AppRoute exact path="/profile" component={Profile} layout={MainLayout} />
         </Router>
     );

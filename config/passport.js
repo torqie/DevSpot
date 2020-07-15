@@ -2,6 +2,17 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const db = require('../models');
+const GithubStrategy = require('passport-github').Strategy;
+
+
+passport.use(new GithubStrategy({
+  clientID: "e32cb05bf499f5151825",
+  clientSecret: "5664f3800cf1d5192fbb2b78a8bfa0d976635462",
+  callbackURL: "/api/auth/github/callback"
+},
+function(accessToken, refreshToken, profile, cb) {
+  return cb(null, profile);
+}));
 
 passport.use(new LocalStrategy({
       usernameField: 'email',
