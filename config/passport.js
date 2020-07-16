@@ -1,27 +1,54 @@
-const passport = require('passport');
-// const LocalStrategy = require('passport-local').Strategy;
-// const bcrypt = require('bcryptjs');
-const db = require('../models');
-const GithubStrategy = require('passport-github').Strategy;
+const User = require('../models/user-model');
+const GithubStrategy = require('passport-github2');
 
 
-passport.use(new GithubStrategy({
-  clientID: "e32cb05bf499f5151825",
-  clientSecret: "5664f3800cf1d5192fbb2b78a8bfa0d976635462",
-  callbackURL: "/api/auth/github/redirect"
-},
-async(accessToken, refreshToken, profile, cb) => {
-  // const currentUser = await db.User.findOne({
-  //
-  // });
-  // if(!currentUser) {
-  //   const newUser = await db.User.create({
-  //     name: profile._json.name,
-  //
-  //   })
-  // }
-  return cb(null, profile);
-}));
+module.exports = function(passport) {
+  passport.serializeUser((user, done) => {
+    done(null, user._id);
+  });
+
+  passport.deserializeUser((id, done) => {
+    console.log("Deserializing");
+    User.findById(id).then(user => {
+      console.log("deser results:", user);
+      done(null, user)
+    }).catch(e => {
+      done(new Error("Failed to deserialize an user"));
+    });
+  });
+  passport.use(new GithubStrategy({
+        clientID: "e32cb05bf499f5151825",
+        clientSecret: "5664f3800cf1d5192fbb2b78a8bfa0d976635462",
+        callbackURL: "/api/auth/github/redirect"
+      },
+      async(accessToken, refreshToken, profile, cb) => {
+        // Find the current user in the User Model
+
+        const currentUser = await User.findOne({
+          'github.id': profile._json.id
+        });
+
+        // Create new user if the database doesnt have the current user.
+        if(!currentUser) {
+          const newUser = await new User({
+            name: profile._json.name,
+            email: profile.emails[0].value,
+            avatar: profile._json.avatar_url,
+            provider: 'github',
+            github: profile._json
+          }).save();
+
+          if(newUser) {
+
+            return cb(null, newUser)
+          }
+        }
+        return cb(null, currentUser)
+      }));
+}
+
+
+
 
 // passport.use(new LocalStrategy({
 //       usernameField: 'email',
@@ -44,4 +71,3 @@ async(accessToken, refreshToken, profile, cb) => {
 //       }).catch((err) => done(err));
 //     })));
 
-module.exports = passport;

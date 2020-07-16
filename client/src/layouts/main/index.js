@@ -13,11 +13,19 @@ class MainLayout extends Component{
 
   componentDidMount() {
 
-    axios.get('http://localhost:3001/api/auth/login/success')
-    .then(response => {
-      if (response.status === 200) return response.json();
-      throw new Error("failed to authenticate user");
+    fetch("http://localhost:3001/api/auth/login/success", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true
+      }
     })
+        .then(response => {
+          if (response.status === 200) return response.json();
+          throw new Error("failed to authenticate user");
+        })
         .then(responseJson => {
           this.setState({
             authenticated: true,
