@@ -56,6 +56,7 @@ app.use(cors({
 
 // Define API routes here
 require('./routes/AuthRoutes')(app, passport);
+require('./routes/UserRoutes')(app, passport);
 
 
 const authCheck = (req, res, next) => {

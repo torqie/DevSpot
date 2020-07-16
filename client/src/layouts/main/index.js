@@ -7,9 +7,25 @@ class MainLayout extends Component{
   constructor(props, {children}) {
     super(props, {children});
     this.state = {
-
+      user: {},
+      theme: "default"
     }
   }
+
+
+  handleThemeChange = async theme => {
+
+    const currentTheme = 'theme-'+this.state.theme;
+    const newTheme = 'theme-' + theme;
+    document.body.classList.remove(currentTheme);
+    document.body.classList.add(newTheme);
+    await axios.put('http://localhost:3001/api/users/update-theme', {id: this.state.user._id, theme: theme}).then(result => {
+      this.setState({theme: result.data.theme})
+    }).catch(error => {
+      console.log(error);
+    });
+  };
+
 
   componentDidMount() {
 
@@ -27,9 +43,17 @@ class MainLayout extends Component{
           throw new Error("failed to authenticate user");
         })
         .then(responseJson => {
+          // Set the theme from he database on login.
+          document.body.classList.remove("theme-default");
+          document.body.classList.add(`theme-${responseJson.user.theme}`);
+
+          // Set the state for the user.
           this.setState({
             authenticated: true,
-            user: responseJson.user
+            user: responseJson.user,
+            theme: responseJson.user.theme
+          }, () => {
+
           });
         })
         .catch(error => {
@@ -44,7 +68,7 @@ class MainLayout extends Component{
   render() {
     return (
         <>
-          <TopNavbar/>
+          <TopNavbar user={this.state.user} changeTheme={this.handleThemeChange}/>
           <div className="container-fluid pl-5">
             <div className="row">
               <div className="col-2 col-sm-1">

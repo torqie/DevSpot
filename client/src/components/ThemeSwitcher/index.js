@@ -3,23 +3,20 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaSwatchbook } from "react-icons/fa";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import axios from 'axios';
+import './style.scss';
 
 class ThemeSwitcher extends Component {
-  state = {
-    theme: 'default'
-  };
-  componentDidMount() {
-    document.body.classList.add('theme-default');
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
   }
 
-  updateTheme = event => {
-    const currentTheme = 'theme-'+this.state.theme;
-    const theme = event;
-    console.log(currentTheme);
-    const newTheme = 'theme-' + theme;
-    document.body.classList.remove(currentTheme);
-    document.body.classList.add(newTheme);
-    this.setState({theme: theme})
+
+  updateTheme = async event => {
+    this.props.changeTheme(event);
   };
 
   render() {

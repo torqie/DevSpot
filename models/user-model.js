@@ -5,6 +5,7 @@ const userSchema = new Schema({
   name: String,
   email: String,
   avatar: String,
+  theme: String,
   provider: String,
   github: Object,
 });
