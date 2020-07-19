@@ -8,7 +8,7 @@ class Home extends Component {
         <div className="row">
           <div className="col-3 d-none d-lg-block">
             <Card>
-              <Card.Header>{}</Card.Header>
+              <Card.Header>{this.props.user.name}</Card.Header>
             </Card>
             <Card className="mt-3">
               <Card.Header>Blah Blah</Card.Header>

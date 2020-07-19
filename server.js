@@ -7,14 +7,19 @@ const passport = require('passport');
 const path = require("path");
 const cors = require('cors');
 const mongoose = require("mongoose");
-const User = require('./models/user-model');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-mongoose.connect('mongodb+srv://thone:facKY3GNbg36sUm5@terikhone-zwf2u.mongodb.net/bootcampbook?retryWrites=true&w=majority', () => {
-  console.log("connected to mongo db");
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/bootcampbook";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useFindAndModify: false }, () => {
+  console.log("Connected to MongoDb");
 });
+
+
+// mongoose.connect('mongodb+srv://thone:facKY3GNbg36sUm5@terikhone-zwf2u.mongodb.net/bootcampbook?retryWrites=true&w=majority', () => {
+//   console.log("connected to mongo db");
+// });
 
 app.use(
     cookieSession({
@@ -23,8 +28,6 @@ app.use(
       maxAge: 24 * 60 * 60 * 100
     })
 );
-
-
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

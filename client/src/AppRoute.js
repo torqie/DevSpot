@@ -1,15 +1,23 @@
 import React from 'react';
-import { Route } from 'react-router'
+import { Redirect, Route } from "react-router";
 
-const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
-  <Route
-      {...rest}
-      render={props => (
-        <Layout>
-          <Component {...props} />
-        </Layout>
-      )}
-  />
-);
+const AppRoute = ({ component: Component, layout: Layout, isLoggedIn, user, ...rest }) => {
+    return (
+
+    <Route
+        {...rest}
+
+        render={props => (
+            isLoggedIn ? (
+                <Layout user={user}>
+                  <Component {...props} />
+                </Layout>
+            ) : (
+                <Redirect to="/" />
+            )
+        )}
+    />
+
+)};
 
 export default AppRoute;

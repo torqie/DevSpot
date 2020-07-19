@@ -14,7 +14,7 @@ class Avatar extends Component {
     <NavDropdown.Item>Profile</NavDropdown.Item>
     <NavDropdown.Item>Settings</NavDropdown.Item>
     <NavDropdown.Divider />
-    <NavDropdown.Item>Logout</NavDropdown.Item>
+    <NavDropdown.Item href="http://localhost:3001/api/auth/logout">Logout</NavDropdown.Item>
 
     </NavDropdown>
     );

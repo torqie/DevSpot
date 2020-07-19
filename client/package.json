@@ -4,6 +4,9 @@
   "description": "Mern Demo",
   "private": true,
   "proxy": "http://localhost:3001/",
+  "engines": {
+    "node": "v12.16.2"
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
