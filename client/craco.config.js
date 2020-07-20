@@ -9,7 +9,7 @@ module.exports = {
           lessOptions: {
             modifyVars: {
               '@primary-color': '#663399', // primary color for all components
-              '@link-color': '#8533b8', // link color
+              '@link-color': '#a638de', // link color
               '@success-color': '#50a21a', // success state color
               '@warning-color': '#faad14', // warning state color
               '@error-color': '#f5222d', // error state color
