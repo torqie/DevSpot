@@ -8,6 +8,7 @@ const userSchema = new Schema({
   theme: String,
   provider: String,
   github: Object,
+  friends: [{ type: Schema.Types.ObjectID, ref: 'User' }]
 });
 
 const User = mongoose.model("User", userSchema);
