@@ -5,11 +5,12 @@ import Profile from "./pages/Profile";
 import LoginForm from "./components/forms/auth/login.form";
 import AppRoute from "./AppRoute";
 import AuthRoute from "./AuthRoute";
+import MainLayout2 from "./layouts/main2";
 import MainLayout from "./layouts/main";
 import AuthLayout from "./layouts/auth";
 import React from "react";
 import axios from "axios";
-import PrivateRoute from "./PrivateRoute";
+import './App.css';
 
 const {Component} = require("react");
 
@@ -56,8 +57,8 @@ class App extends Component {
     return (
         <Router>
           <AuthRoute exact path="/" component={LoginForm} isLoggedIn={this.state.loggedIn} layout={AuthLayout}  />
-          <AppRoute exact path="/news-feed" component={Home} layout={MainLayout} isLoggedIn={this.state.loggedIn} user={this.state.user} />
-          <AppRoute exact path="/profile" component={Profile} layout={MainLayout} isLoggedIn={this.state.loggedIn} user={this.state.user} />
+          <AppRoute exact path="/news-feed" component={Home} layout={MainLayout2} isLoggedIn={this.state.loggedIn} user={this.state.user} />
+          <AppRoute exact path="/profile" component={Profile} layout={MainLayout2} isLoggedIn={this.state.loggedIn} user={this.state.user} />
         </Router>
     );
   }

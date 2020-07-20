@@ -17,9 +17,6 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useFindAndModify: false }
 });
 
 
-// mongoose.connect('mongodb+srv://thone:facKY3GNbg36sUm5@terikhone-zwf2u.mongodb.net/bootcampbook?retryWrites=true&w=majority', () => {
-//   console.log("connected to mongo db");
-// });
 
 app.use(
     cookieSession({
