@@ -10,7 +10,7 @@ import MainLayout from "./layouts/main";
 import AuthLayout from "./layouts/auth";
 import React from "react";
 import axios from "axios";
-import './App.css';
+import './App.less';
 
 const {Component} = require("react");
 

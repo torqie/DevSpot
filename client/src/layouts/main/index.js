@@ -4,8 +4,8 @@ import React, { Component } from "react";
 import axios from "axios";
 
 class MainLayout extends Component{
-  constructor(props, {children}) {
-    super(props, {children});
+  constructor(props) {
+    super(props);
     this.state = {
     }
   }
@@ -41,7 +41,7 @@ class MainLayout extends Component{
                 <section id="main">
                   <div className="row">
                     <div className="col-12 ">
-                      {this.children}
+                      {this.props.children}
                     </div>
                   </div>
                 </section>
