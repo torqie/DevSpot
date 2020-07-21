@@ -3,7 +3,16 @@ import { Card, List, Avatar } from "antd";
 
 class NewConnectionsCard extends Component {
   state = {
-    fo
+    article: {}
+  }
+
+  componentDidMount() {
+    // API Call
+    axios.get("apiaddress").then(response => {
+      this.setState({article: response.data})
+    }).catch(error => {
+      console.log("Error getting news article: ", error);
+    });
   }
 
   render() {
@@ -12,7 +21,7 @@ class NewConnectionsCard extends Component {
           <Card>
             <List
                 itemLayout="horizontal"
-                dataSource={data}
+                dataSource={}
                 renderItem={item => (
                     <List.Item>
                       <List.Item.Meta
