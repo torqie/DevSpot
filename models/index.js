@@ -1,5 +1,6 @@
 // Exporting an object containing all of our models
 module.exports = {
   User: require("./user.model"),
-  Post: require("./posts.model"),
+  Friend: require("./friend.model"),
+  Post: require("./post.model"),
 };
