@@ -1,0 +1,38 @@
+// Override default variables before the import
+$body-bg: #f9f9f9;
+$enable-caret: false;
+
+$primary: #663399;
+
+.tooltip {
+  &.show {
+    opacity: 1;
+  }
+  &>.tooltip-inner {
+    max-width: 200px;
+    padding: 3px 8px;
+    color: #6e6e6e;
+    font-weight: 500;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: .25rem;
+    border: 2px solid #cbcbcb;
+    opacity: 1;
+
+  }
+
+  &.bs-tooltip-right > .arrow::before {
+    left: 0;
+    content: "";
+    border-width: 5px 5px 5px 0;
+    border-right-color: #cbcbcb;
+  }
+  &.bs-tooltip-bottom > .arrow::before {
+    left: 0;
+    content: "";
+    border-width: 0 5px 5px 5px;
+    border-bottom-color: #cbcbcb;
+  }
+}
+  // Import Bootstrap and its default variables
+  @import '~bootstrap/scss/bootstrap.scss';
