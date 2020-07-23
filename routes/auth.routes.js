@@ -28,7 +28,7 @@ module.exports = (app, passport) => {
   // When logout, redirect to client
   app.get("/api/auth/logout", (req, res) => {
     req.logout();
-    res.redirect("http://localhost:3000/");
+    return res.redirect(req.baseUrl + "/");
   });
 
 

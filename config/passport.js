@@ -32,7 +32,6 @@ module.exports = function(passport) {
         if(!currentUser) {
           const newUser = await new User({
             name: profile._json.name,
-            email: profile.emails[0].value,
             avatar: profile._json.avatar_url,
             provider: 'github',
             github: profile._json
