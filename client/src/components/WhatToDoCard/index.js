@@ -1,7 +1,9 @@
 import React, { Component } from "react"
 import {  Mentions,  Tabs,  Form, Empty, Card } from "antd";
 import "./style.less";
-import NewConnectionsCard from "../NewsFeed/NewConnections";
+import NewConnectionsCard from "../NewConnections";
+import NewsFeedCard from "../NewsFeedCard";
+import Space from "antd/es/space";
 
 const { Option } = Mentions;
 const { TabPane } = Tabs;
@@ -10,7 +12,7 @@ const { TabPane } = Tabs;
 class WhatToDoCard extends Component {
   render() {
     return (
-        <div className="card-container" >
+        <div className="card-container" style={{marginBottom: "40px"}} >
 
             <Tabs type="card" >
               <TabPane tab="SHARE AN UPDATE" key="1" >
@@ -29,6 +31,8 @@ class WhatToDoCard extends Component {
                   </Mentions>
 
                 </Form>
+
+
               </TabPane>
               <TabPane tab="Q & A" key="2" >
                 <Empty />

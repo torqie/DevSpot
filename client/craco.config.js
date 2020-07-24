@@ -12,7 +12,7 @@ module.exports = {
               '@primary-color': '#663399', // primary color for all components
               '@link-color': '#663399', // link color
               '@font-size-base': '14px', // major text font size
-              '@font-family': 'Roboto Condensed, sans-serif',
+              '@font-family': 'Roboto, sans-serif',
               '@menu-dark-item-active-bg': 'transparent',
               '@border-radius-base': '3px', // major border radius
             },
