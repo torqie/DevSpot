@@ -13,3 +13,7 @@
 .site-layout .site-layout-background {
   background: #fff;
 }
+
+.logo h3 {
+  margin:0;
+}
