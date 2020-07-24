@@ -1,5 +1,5 @@
 const User = require('../models/user.model');
-const GithubStrategy = require('passport-github2');
+const GithubStrategy = require('passport-github');
 
 
 module.exports = function(passport) {
@@ -23,16 +23,16 @@ module.exports = function(passport) {
       },
       async(accessToken, refreshToken, profile, cb) => {
         // Find the current user in the User Model
-
+        console.log(profile._json.id)
         const currentUser = await User.findOne({
           'github.id': profile._json.id
         });
-
+        console.log("current user", currentUser)
         // Create new user if the database doesnt have the current user.
         if(!currentUser) {
+          console.log("MADE IT")
           const newUser = await new User({
             name: profile._json.name,
-            email: profile.emails[0].value,
             avatar: profile._json.avatar_url,
             provider: 'github',
             github: profile._json
