@@ -23,13 +23,14 @@ module.exports = function(passport) {
       },
       async(accessToken, refreshToken, profile, cb) => {
         // Find the current user in the User Model
-
+        console.log(profile._json.id)
         const currentUser = await User.findOne({
           'github.id': profile._json.id
         });
-
+        console.log("current user", currentUser)
         // Create new user if the database doesnt have the current user.
         if(!currentUser) {
+          console.log("MADE IT")
           const newUser = await new User({
             name: profile._json.name,
             avatar: profile._json.avatar_url,
