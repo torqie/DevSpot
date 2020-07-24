@@ -4,6 +4,7 @@ import ProfileCard from "../../components/NewsFeed/ProfileCard";
 import "./style.less";
 
 import WhatToDoCard from "../../components/WhatToDoCard";
+import TechNewsFeed from "../../components/TechNews";
 
 const { Option } = Mentions;
 const { TabPane } = Tabs;
@@ -32,13 +33,7 @@ class Home extends Component {
               <WhatToDoCard />
             </Col>
             <Col span={0} md={{span: 6}}>
-              <Card
-                  hoverable="true"
-                  cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-                  theme="dark"
-              >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-              </Card>
+              <TechNewsFeed />
             </Col>
           </Row>
         </>
