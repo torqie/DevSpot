@@ -6,7 +6,6 @@ import LoginForm from "./components/forms/auth/login.form";
 import AppRoute from "./AppRoute";
 import AuthRoute from "./AuthRoute";
 import MainLayout2 from "./layouts/main2";
-import MainLayout from "./layouts/main";
 import AuthLayout from "./layouts/auth";
 import React from "react";
 import axios from "axios";
@@ -16,30 +15,52 @@ const {Component} = require("react");
 
 class App extends Component {
   state = {
-    loggedIn: "",
+    loggedIn: false,
     user: {},
   };
 
-  componentDidMount = async () => {
-    await this.checkLoginStatus();
+  componentDidMount = () => {
+    const localLoggedIn = localStorage.getItem('loggedIn');
+    const localUserId = localStorage.getItem('userId');
+    if(JSON.parse(localLoggedIn) === false || localLoggedIn === null || localUserId === null) {
+      this.checkLoginStatus();
+    } else {
+      axios
+        .get(`/api/users/${localUserId}`)
+        .then(response => {
+          this.setState({
+            loggedIn: true,
+            user: response
+          })
+        })
+        .catch(error => {
+          console.log("Failed to get users details. ", error);
+        });
+    }
   };
 
   checkLoginStatus = () => {
     axios
-      .get("http://localhost:3001/api/auth/login/success", { withCredentials: true })
+      .get("/api/auth/login/success", { withCredentials: true })
       .then(response => {
 
         if(response.data.success) {
           console.log("Check Login Status: ", response.data.success);
+          //Set the local storage
+          localStorage.setItem("loggedIn", "true");
+          localStorage.setItem("userId", response.data.user._id);
+
+          // Set the state
           this.setState({
             loggedIn: true,
             user: response.data.user,
-          }, () => {
-            this.setTheme(response.data.user.theme)
           });
         } else {
+          localStorage.removeItem("loggedIn");
+          localStorage.removeItem("userId");
           this.setState({
             loggedIn: false,
+
           });
         }
       })
@@ -48,17 +69,12 @@ class App extends Component {
       })
   };
 
-  setTheme = theme => {
-    const newTheme = 'theme-' + theme;
-    document.body.classList.add(newTheme);
-  };
-
   render() {
     return (
         <Router>
-          <AuthRoute exact path="/" component={LoginForm} isLoggedIn={this.state.loggedIn} layout={AuthLayout}  />
-          <AppRoute exact path="/news-feed" component={Home} layout={MainLayout2} isLoggedIn={this.state.loggedIn} user={this.state.user} />
-          <AppRoute exact path="/profile" component={Profile} layout={MainLayout2} isLoggedIn={this.state.loggedIn} user={this.state.user} />
+          <AuthRoute exact path="/" component={LoginForm}  layout={AuthLayout}  />
+          <AppRoute exact path="/news-feed" component={Home} layout={MainLayout2}  />
+          <AppRoute exact path="/profile" component={Profile} layout={MainLayout2} />
         </Router>
     );
   }
