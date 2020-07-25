@@ -38,7 +38,7 @@ module.exports = (app, passport) => {
   app.get(
       "/api/auth/github/redirect",
       passport.authenticate("github", {
-        successRedirect: "http://localhost:3000/news-feed",
+        successRedirect: "/news-feed",
         failureRedirect: "/api/auth/login/failed"
       })
   );

@@ -1,10 +1,11 @@
 import React, { Component } from "react"
 import { Avatar, Col, Mentions, Row, Statistic, Tabs, Space, Form, Carousel, Empty, Card } from "antd";
-import ProfileCard from "../../components/NewsFeed/ProfileCard";
+import ProfileCard from "../../components/ProfileCard";
 import "./style.less";
 
 import WhatToDoCard from "../../components/WhatToDoCard";
 import TechNewsFeed from "../../components/TechNews";
+import NewsFeedCard from "../../components/NewsFeedCard";
 
 const { Option } = Mentions;
 const { TabPane } = Tabs;
@@ -31,6 +32,11 @@ class Home extends Component {
             </Col>
             <Col span={24} md={{span: 12}}>
               <WhatToDoCard />
+              <NewsFeedCard />
+              <NewsFeedCard />
+              <NewsFeedCard />
+
+
             </Col>
             <Col span={0} md={{span: 6}}>
               <TechNewsFeed />

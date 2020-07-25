@@ -38,7 +38,7 @@ class ProfileCard extends Component {
         <Row justify="center" style={{textAlign: "center"}} >
           <Col span={24}>
             <Avatar size={125} src={this.state.user.avatar}/>
-            <h5 className="mt-2">{this.state.user.name}</h5>
+            <h2 className="mt-2">{this.state.user.name}</h2>
             <small>{this.state.user.github.bio}</small>
           </Col>
         </Row>
