@@ -3,8 +3,8 @@ import axios from 'axios'
 import { Card, Carousel, Skeleton } from "antd";
 import List from "antd/es/list";
 import Avatar from "antd/es/avatar";
+import "./style.css"
 const { Meta } = Card;
-
 
 
 export default class TechNewsFeed extends Component {
@@ -31,7 +31,9 @@ export default class TechNewsFeed extends Component {
         const { loading } = this.state;
         console.log("articles", this.state.articles);
         return (
+            <Card id="techcard">
             <Skeleton loading={this.state.loading} active avatar>
+            <h3 id="techtitle">Tech News</h3>
                 <Carousel autoplay autoplaySpeed={10000} dots={false} easing="easeOutCubic">
                     {!loading && this.state.articles.map((article, index) => {
                         return (
@@ -45,6 +47,7 @@ export default class TechNewsFeed extends Component {
                     )})}
                 </Carousel>
             </Skeleton>
+            </Card>
         )
     }
 }
