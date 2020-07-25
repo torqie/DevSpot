@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import "./style.less";
 
 class NewQuestionsCard extends Component {
 	state = {
@@ -8,12 +9,6 @@ class NewQuestionsCard extends Component {
 	}
 
 	componentDidMount() {
-		// // API Call
-		// axios.get("apiaddress").then(response => {
-		//   this.setState({article: response.data})
-		// }).catch(error => {
-		//   console.log("", error);
-		// });
 		this.setState({ loading: false })
 	}
 
