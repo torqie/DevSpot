@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Mentions, Tabs, Form, Empty, Card, Col } from "antd";
 import "./style.less";
 import NewConnectionsCard from "../NewConnections";
+import ShareUpdate from "../ShareUpdate";
 import NewsFeedCard from "../NewsFeedCard";
 import axios from  "axios";
 
@@ -33,38 +34,16 @@ class WhatToDoCard extends Component {
 
             <Tabs type="card" >
               <TabPane tab="SHARE AN UPDATE" key="1" >
-                <Form>
-
-                  <Mentions
-                      style={{ width: '100%', border: 0 }}
-                      onChange={this.onChange}
-                      onSelect={this.onSelect}
-                      placeholder="Whats on your mind? Use @ to mention someone."
-                  >
-                    { this.state.users.length > 0 ? (
-                        this.state.users.map((user, index) => {
-                          return <option key={user._id} value={user.name}>{user.name}</option>
-                        })
-                    ) : null }
-                  </Mentions>
-
-                </Form>
-
-                <NewsFeedCard />
-                <NewsFeedCard />
-                <NewsFeedCard />
-
+                <ShareUpdate />
               </TabPane>
               <TabPane tab="Q & A" key="2" >
                 <Empty />
               </TabPane>
               <TabPane tab="NEW CONNECTIONS" key="3">
                <NewConnectionsCard />
-
               </TabPane>
               <TabPane tab="FIND A JOB" key="4">
                 <Empty />
-
               </TabPane>
             </Tabs>
 
