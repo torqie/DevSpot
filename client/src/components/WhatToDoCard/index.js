@@ -1,18 +1,35 @@
 import React, { Component } from "react"
-import {  Mentions,  Tabs,  Form, Empty, Card } from "antd";
+import { Mentions, Tabs, Form, Empty, Card, Col } from "antd";
 import "./style.less";
 import NewConnectionsCard from "../NewConnections";
 import NewsFeedCard from "../NewsFeedCard";
-import Space from "antd/es/space";
+import axios from  "axios";
 
 const { Option } = Mentions;
 const { TabPane } = Tabs;
 
-
 class WhatToDoCard extends Component {
+  state = {
+    users: []
+  };
+
+
+
+  componentDidMount = () => {
+    axios
+      .get("/api/users/")
+      .then(response => {
+        console.log("users", response.data);
+        this.setState({users: response.data})
+      })
+      .catch(error => {
+
+      });
+  };
+
   render() {
     return (
-        <div className="card-container" style={{marginBottom: "40px"}} >
+        <div id="what-to-do" className="card-container" style={{}} >
 
             <Tabs type="card" >
               <TabPane tab="SHARE AN UPDATE" key="1" >
@@ -24,14 +41,18 @@ class WhatToDoCard extends Component {
                       onSelect={this.onSelect}
                       placeholder="Whats on your mind? Use @ to mention someone."
                   >
-
-                    <Option value="afc163">afc163</Option>
-                    <Option value="zombieJ">zombieJ</Option>
-                    <Option value="yesmeck">yesmeck</Option>
+                    { this.state.users.length > 0 ? (
+                        this.state.users.map((user, index) => {
+                          return <option key={user._id} value={user.name}>{user.name}</option>
+                        })
+                    ) : null }
                   </Mentions>
 
                 </Form>
 
+                <NewsFeedCard />
+                <NewsFeedCard />
+                <NewsFeedCard />
 
               </TabPane>
               <TabPane tab="Q & A" key="2" >

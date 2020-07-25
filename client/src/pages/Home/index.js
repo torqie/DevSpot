@@ -32,9 +32,7 @@ class Home extends Component {
             </Col>
             <Col span={24} md={{span: 12}}>
               <WhatToDoCard />
-              <NewsFeedCard />
-              <NewsFeedCard />
-              <NewsFeedCard />
+
 
 
             </Col>

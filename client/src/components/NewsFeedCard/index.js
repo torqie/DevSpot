@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Card from "antd/es/card";
 import { Avatar } from "antd";
+import "./style.css"
 
 class NewsFeedCard extends Component {
   render() {
