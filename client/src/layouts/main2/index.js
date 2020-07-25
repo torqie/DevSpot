@@ -2,7 +2,8 @@ import { Layout, Menu } from "antd";
 import React, { Component } from "react";
 import "./style.css";
 import Navigation from "../../components/Navigation";
-const { Header, Content, Footer } = Layout;
+import Footer from "../../components/Footer/footer.js";
+const { Header, Content} = Layout;
 
 
 class MainLayout2 extends Component {
@@ -36,7 +37,7 @@ class MainLayout2 extends Component {
             >
               {this.props.children}
             </Content>
-          <Footer  style={{ textAlign: 'center' }}>Designed and Developed by WolffsRockstars. T Freaking M</Footer>
+          <Footer  style={{ textAlign: 'center' }}></Footer>
           </Layout>
     );
   }
