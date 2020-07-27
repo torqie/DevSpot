@@ -7,15 +7,16 @@ import Dropdown from "antd/es/dropdown";
 
 const { Meta } = Card;
 const menu = (
+    //TODO:: Check if post belongs to user if so allow to delete post if
+    // not allow them to hide post / remove connection
     <Menu>
       <Menu.Item key="0">
-        <a href="http://www.alipay.com/">1st menu item</a>
+        <a href="http://www.alipay.com/">Delete Post</a>
       </Menu.Item>
       <Menu.Item key="1">
-        <a href="http://www.taobao.com/">2nd menu item</a>
+        <a href="http://www.taobao.com/">Hide Post</a>
       </Menu.Item>
-      <Menu.Divider />
-      <Menu.Item key="3">3rd menu item</Menu.Item>
+      <Menu.Item key="3">Un-follow</Menu.Item>
     </Menu>
 );
 
@@ -26,7 +27,7 @@ class NewsFeedCard extends Component {
         <div>
           <Card
             style={{marginBottom: "20px"}}
-            title={<Avatar size="large" src="https://via.placeholder.com/300.png/663399/fff" />}
+            title={[<Avatar size="large" src={this.props.author.avatar} style={{marginRight: "10px"}} />, this.props.author.name]}
             extra={
               <Dropdown overlay={menu} trigger={['click']}>
                 <a className="ant-dropdown-link" style={{color: '#ffffff'}} onClick={e => e.preventDefault()}>
@@ -37,8 +38,6 @@ class NewsFeedCard extends Component {
           >
 
             <Meta
-              avatar={<Avatar size="large" src={this.props.author.avatar} />}
-              title={this.props.author.name}
               description={this.props.content}
             />
           </Card>
