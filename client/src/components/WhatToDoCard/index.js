@@ -1,12 +1,10 @@
 import React, { Component } from "react"
-import { Mentions, Tabs, Form, Empty, Card, Col } from "antd";
+import { Tabs, Empty } from "antd";
 import "./style.less";
 import NewConnectionsCard from "../NewConnections";
 import ShareUpdate from "../ShareUpdate";
-import NewsFeedCard from "../NewsFeedCard";
 import axios from  "axios";
-
-const { Option } = Mentions;
+import NewQuestionsCard from "../QnATab";
 const { TabPane } = Tabs;
 
 class WhatToDoCard extends Component {
@@ -38,7 +36,7 @@ class WhatToDoCard extends Component {
                 <ShareUpdate updatePostCount={this.updatePostCount} />
               </TabPane>
               <TabPane tab="Q & A" key="2" >
-                <Empty />
+              <NewQuestionsCard />
               </TabPane>
               <TabPane tab="NEW CONNECTIONS" key="3">
                <NewConnectionsCard />
@@ -47,8 +45,7 @@ class WhatToDoCard extends Component {
                 <Empty />
               </TabPane>
             </Tabs>
-
-        </div>
+      </div>
     );
   }
 }
