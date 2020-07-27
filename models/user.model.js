@@ -8,7 +8,8 @@ const userSchema = new Schema({
   theme: String,
   provider: String,
   github: Object,
-  friends: [{ type: Schema.Types.ObjectID, ref: 'Friends' }]
+  friends: [{ type: Schema.Types.ObjectID, ref: 'Friend' }],
+  posts: [{ type: Schema.Types.ObjectID, ref: 'Post' }]
 });
 
 const User = mongoose.model("User", userSchema);

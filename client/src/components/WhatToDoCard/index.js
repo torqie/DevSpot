@@ -14,27 +14,28 @@ class WhatToDoCard extends Component {
     users: []
   };
 
-
-
   componentDidMount = () => {
     axios
       .get("/api/users/")
       .then(response => {
         console.log("users", response.data);
-        this.setState({users: response.data})
+        this.setState({users: response.data});
       })
       .catch(error => {
-
+        console.log(error);
       });
+  };
+
+  updatePostCount = () => {
+    this.props.updatePostCount();
   };
 
   render() {
     return (
         <div id="what-to-do" className="card-container" style={{}} >
-
             <Tabs type="card" >
               <TabPane tab="SHARE AN UPDATE" key="1" >
-                <ShareUpdate />
+                <ShareUpdate updatePostCount={this.updatePostCount} />
               </TabPane>
               <TabPane tab="Q & A" key="2" >
                 <Empty />

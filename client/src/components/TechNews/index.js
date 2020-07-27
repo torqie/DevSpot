@@ -32,7 +32,7 @@ export default class TechNewsFeed extends Component {
         const { loading } = this.state;
         console.log("articles", this.state.articles);
         return (
-            <Skeleton loading={this.state.loading} active avatar>
+            <Skeleton loading={this.state.loading} active avatar={{active: true, size: "large", shape:"square"}}>
                 <Carousel autoplay autoplaySpeed={10000} dots={false} easing="easeOutCubic">
                     {!loading && this.state.articles.map((article, index) => {
                         return (
