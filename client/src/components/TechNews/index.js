@@ -16,6 +16,10 @@ export default class TechNewsFeed extends Component {
     componentDidMount() {
         axios
             .get("https://bing-news-search1.p.rapidapi.com/news?safeSearch=Off&category=Technology&rapidapi-key=" + process.env.REACT_APP_BING_NEWS_SEARCH_API_KEY)
+            //http://newsapi.org/v2/everything?q=development&sources=the-next-web&language=en&sortBy=popularity&apiKey=9d3ac01011fd48d48e3ba325098a4cfe
+           
+           
+           
             .then(response => {
                 this.setState({
                     articles: response.data.value,
