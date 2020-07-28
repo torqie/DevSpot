@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, List, Avatar, PageHeader, Divider } from "antd";
+import { List, Avatar, Divider } from "antd";
 
 class NewConnectionsCard extends Component {
   state = {

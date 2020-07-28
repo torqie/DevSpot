@@ -4,7 +4,6 @@ import { Card, Carousel, Skeleton } from "antd";
 import List from "antd/es/list";
 import Avatar from "antd/es/avatar";
 import "./style.css"
-const { Meta } = Card;
 
 export default class TechNewsFeed extends Component {
     state = {
