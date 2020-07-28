@@ -1,3 +1,5 @@
+
+
 module.exports = (app, passport) => {
 // when login is successful, retrieve user info
   app.get("/api/auth/login/success", (req, res) => {
@@ -28,7 +30,7 @@ module.exports = (app, passport) => {
   // When logout, redirect to client
   app.get("/api/auth/logout", (req, res) => {
     req.logout();
-    return res.redirect(req.baseUrl + "/");
+    return res.json({success: true, message: "You have been successfully logged out."})
   });
 
 
@@ -38,7 +40,7 @@ module.exports = (app, passport) => {
   app.get(
       "/api/auth/github/redirect",
       passport.authenticate("github", {
-        successRedirect: "/news-feed",
+        successRedirect: process.env.CLIENT_HOME_PAGE_URL,
         failureRedirect: "/api/auth/login/failed"
       })
   );

@@ -11,12 +11,9 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/bootcampbook";
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useFindAndModify: false }, () => {
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useFindAndModify: false }, () => {
   console.log("Connected to MongoDb");
 });
-
-
 
 app.use(
     cookieSession({
@@ -52,12 +49,10 @@ app.use(cors({
   })
 );
 
-
-
 // Define API routes here
 require('./routes/auth.routes')(app, passport);
 require('./routes/user.routes')(app, passport);
-
+require('./routes/posts.routes')(app, passport);
 
 const authCheck = (req, res, next) => {
   if (!req.user) {

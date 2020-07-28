@@ -1,42 +1,45 @@
 import React, { Component } from "react"
-import { Avatar, Col, Mentions, Row, Statistic, Tabs, Space, Form, Carousel, Empty, Card } from "antd";
+import { Col, Row, } from "antd";
 import ProfileCard from "../../components/ProfileCard";
-import "./style.less";
-
 import WhatToDoCard from "../../components/WhatToDoCard";
 import TechNewsFeed from "../../components/TechNews";
-import NewsFeedCard from "../../components/NewsFeedCard";
-
-const { Option } = Mentions;
-const { TabPane } = Tabs;
-const { Meta } = Card;
-
-
-
+import axios from "axios";
+import "./style.less";
 
 class Home extends Component {
   state = {
-    user: {}
+    user: {},
+    totalPosts: 0
   };
   componentDidMount() {
-    // Get the current logged in user
-
+    this.loadTotalPosts();
   }
+
+  loadUser = () => {
+    // Get the current logged in user
+    axios
+        .get(`/api/users/${localStorage.getItem("userId")}`)
+        .then(response => {
+          this.setState({user: response.data, totalPosts: response.data.posts.length})
+        })
+        .catch(error => {
+          console.log(error);
+        })
+  }
+
+  loadTotalPosts = async () => {
+    return this.loadUser();
+  };
 
   render() {
     return (
         <>
           <Row gutter={{xs: 8, sm: 16, md: 24, lg: 32}}>
             <Col span={0} md={{span: 6}}>
-                <ProfileCard />
+                <ProfileCard totalPosts={this.state.totalPosts} />
             </Col>
             <Col span={24} md={{span: 12}}>
-              <WhatToDoCard />
-              <NewsFeedCard />
-              <NewsFeedCard />
-              <NewsFeedCard />
-
-
+              <WhatToDoCard updatePostCount={this.loadUser} />
             </Col>
             <Col span={0} md={{span: 6}}>
               <TechNewsFeed />
