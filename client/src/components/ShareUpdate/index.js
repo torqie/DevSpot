@@ -31,7 +31,6 @@ class ShareUpdate extends Component {
         content: this.state.updateText,
         visibleTo: "public"
       }).then(response => {
-        console.log(response);
         this.loadPosts();
         this.updatePostCount();
         this.setState({loading: false, updateText: ''});
@@ -90,6 +89,7 @@ class ShareUpdate extends Component {
           <Form>
             <Row>
               <Mentions
+                  rows="3"
                   autoSize
                   style={{ width: '100%', border: 0 }}
                   onChange={this.onChange}
@@ -101,7 +101,7 @@ class ShareUpdate extends Component {
                 { this.state.users.length > 0 ? (
                     this.state.users.map((user, index) => {
                       return (
-                      <option key={user._id} value={user.name}>
+                      <option key={index} value={user.name}>
                         <Avatar src={user.avatar} style={{marginRight: "4px"}} />{user.name}
                       </option>
                     )})
