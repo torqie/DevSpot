@@ -19,7 +19,9 @@ class Navigation extends Component {
     axios
       .get('/api/auth/logout')
       .then(response => {
-        this.props.history.push("/");
+        if(response.data.success) {
+          window.location.reload();
+        }
       })
       .catch(error => {
         console.log(error);
@@ -42,7 +44,7 @@ class Navigation extends Component {
             </Menu.Item>
 
             <SubMenu icon={
-              <Badge count={0} style={{fontSize: "10px"}}>
+              <Badge count={1} style={{fontSize: "10px"}}>
                 <FaUserFriends style={{marginRight: "0", fontSize: "22px"}} />
               </Badge>
             }>
@@ -54,7 +56,7 @@ class Navigation extends Component {
             <SubMenu icon={<FaEllipsisV style={{marginRight: "0", fontSize: "22px"}} />}>
               <Menu.Item key="setting:1">Profile</Menu.Item>
               <Menu.Item key="setting:2">Settings</Menu.Item>
-              <Menu.Item key="setting:3">Logout</Menu.Item>
+              <Menu.Item key="setting:3" onClick={this.logout}>Logout</Menu.Item>
             </SubMenu>
         </Menu>
           </>
