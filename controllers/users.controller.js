@@ -9,7 +9,14 @@ exports.all = async (req, res) => {
 
 // Search for user by name
 exports.searchByName = async (req, res) => {
-  const users = await db.User.find({name: {$regex: req.params.id, $options: "i"}}).limit(5);
+  const users = await db.User.find(
+    {$or: [
+        {name: {$regex: req.params.id, $options: "i"}},
+        {login: {$regex: req.params.id, $options: "i"}}
+      ]
+
+
+    }).limit(5);
   return res.json(users);
 };
 

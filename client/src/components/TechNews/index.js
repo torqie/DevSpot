@@ -14,7 +14,7 @@ export default class TechNewsFeed extends Component {
     componentDidMount() {
         axios
             .get("https://bing-news-search1.p.rapidapi.com/news?safeSearch=Off&category=Technology&rapidapi-key=" + process.env.REACT_APP_BING_NEWS_SEARCH_API_KEY)
-            //http://newsapi.org/v2/everything?q=development&sources=the-next-web&language=en&sortBy=popularity&apiKey=
+            //"http://newsapi.org/v2/everything?q=development&sources=the-next-web&language=en&sortBy=popularity&apiKey=" + process.env.REACT_APP_NEWS_API_KEY
 
             .then(response => {
                 this.setState({
@@ -34,7 +34,7 @@ export default class TechNewsFeed extends Component {
             <Card id="techcard">
             <Skeleton loading={this.state.loading} active avatar>
             <h2 id="techtitle">Latest Tech News</h2>
-                <Carousel autoplay autoplaySpeed={5000} dots={false} easing="easeOutCubic">
+                <Carousel autoplay autoplaySpeed={15000} dots={false}>
                     {!loading && this.state.articles.map((article, index) => {
                         return (
                             <List.Item key={index}>
