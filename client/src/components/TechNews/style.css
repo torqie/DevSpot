@@ -1,8 +1,9 @@
 #techcard {
-background-color: #262626;
-height: 400px;
+height: calc(100% - 68px);
+margin-bottom: 15px;
 }
 
 #techtitle {
     text-align: center;
+    color:#734b97
 }

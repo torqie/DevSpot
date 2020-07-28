@@ -37,14 +37,14 @@ export default class TechNewsFeed extends Component {
         return (
             <Card id="techcard">
             <Skeleton loading={this.state.loading} active avatar>
-            <h3 id="techtitle">Tech News</h3>
-                <Carousel autoplay autoplaySpeed={10000} dots={false} easing="easeOutCubic">
+            <h2 id="techtitle">Latest Tech News</h2>
+                <Carousel autoplay autoplaySpeed={5000} dots={false} easing="easeOutCubic">
                     {!loading && this.state.articles.map((article, index) => {
                         return (
                             <List.Item key={index}>
                                 <List.Item.Meta
-                                    avatar={!loading && (<Avatar size={100} shape="square" src={article.image.thumbnail.contentUrl} />)}
                                     title={!loading && (<a href={article.url}>{article.name}</a>)}
+                                    avatar={!loading && (<Avatar size={120} shape="square" src={article.image.thumbnail.contentUrl} />)}
                                     description={!loading && (article.description)}
                                 />
                         </List.Item>
