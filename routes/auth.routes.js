@@ -40,7 +40,7 @@ module.exports = (app, passport) => {
   app.get(
       "/api/auth/github/redirect",
       passport.authenticate("github", {
-        successRedirect: "/news-feed",
+        successRedirect: process.env.CLIENT_HOME_PAGE_URL,
         failureRedirect: "/api/auth/login/failed"
       })
   );
