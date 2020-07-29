@@ -8,7 +8,7 @@ class NewQuestionsCard extends Component {
 		loading: true,
 		article: {},
 		showPostButton: false,
-		posts: []
+		questions: []
 	};
 
 	onChange = value => {

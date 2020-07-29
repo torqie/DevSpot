@@ -53,6 +53,7 @@ app.use(cors({
 require('./routes/auth.routes')(app, passport);
 require('./routes/user.routes')(app, passport);
 require('./routes/posts.routes')(app, passport);
+require('./routes/questions.routes')(app, passport);
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
