@@ -13,15 +13,15 @@ class NewQuestionsCard extends Component {
 		questions: []
 	};
 
-	onChange = value => {
-		if (value.length > 0) {
+	onChange = target => {
+		if (target.length > 0) {
 			this.setState({
-				questionText: value, showQuestionButton
+				questionText: target.value, showQuestionButton
 					: true
 			})
 		} else {
 			this.setState({
-				questionText: value, showQuestionButton
+				questionText: target.value, showQuestionButton
 					: false
 			})
 		}
@@ -67,23 +67,11 @@ class NewQuestionsCard extends Component {
 				<Form>
 					<Row>
 						<Input
-							autoSize
 							style={{ width: '100%', border: 0 }}
 							onChange={this.onChange}
-							onSearch={this.onSearch}
-							onSelect={this.onSelect}
 							placeholder="Ask you question here..."
 							value={this.state.questionText}
 						>
-							{this.state.users.length > 0 ? (
-								this.state.users.map((user, index) => {
-									return (
-										<option key={user._id} value={user.name}>
-											<Avatar src={user.avatar} style={{ marginRight: "4px" }} />{user.name}
-										</option>
-									)
-								})
-							) : null}
 						</Input>
 					</Row>
 
