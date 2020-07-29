@@ -9,7 +9,7 @@ const postSchema = new Schema({
     author: { type: Schema.Types.ObjectID, ref: 'User' },
     content: String
   }]
-});
+}, { timestamps: true });
 
 const Post = mongoose.model("Post", postSchema);
 

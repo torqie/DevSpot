@@ -1,44 +1,48 @@
 import React, { Component } from "react"
-import { Avatar, Col, Mentions, Row, Statistic, Tabs, Space, Form, Carousel, Empty, Card } from "antd";
-import ProfileCard from "../../components/NewsFeed/ProfileCard";
-import "./style.less";
-
+import { Col, Row, } from "antd";
+import ProfileCard from "../../components/ProfileCard";
 import WhatToDoCard from "../../components/WhatToDoCard";
-
-const { Option } = Mentions;
-const { TabPane } = Tabs;
-const { Meta } = Card;
-
-
-
+import TechNewsFeed from "../../components/TechNews";
+import axios from "axios";
+import "./style.less";
 
 class Home extends Component {
   state = {
-    user: {}
+    user: {},
+    totalPosts: 0
   };
   componentDidMount() {
-    // Get the current logged in user
-
+    this.loadTotalPosts();
   }
+
+  loadUser = () => {
+    // Get the current logged in user
+    axios
+        .get(`/api/users/${localStorage.getItem("userId")}`)
+        .then(response => {
+          this.setState({user: response.data, totalPosts: response.data.posts.length})
+        })
+        .catch(error => {
+          console.log(error);
+        })
+  }
+
+  loadTotalPosts = async () => {
+    return this.loadUser();
+  };
 
   render() {
     return (
         <>
           <Row gutter={{xs: 8, sm: 16, md: 24, lg: 32}}>
             <Col span={0} md={{span: 6}}>
-                <ProfileCard />
+                <ProfileCard totalPosts={this.state.totalPosts} />
             </Col>
             <Col span={24} md={{span: 12}}>
-              <WhatToDoCard />
+              <WhatToDoCard updatePostCount={this.loadUser} />
             </Col>
             <Col span={0} md={{span: 6}}>
-              <Card
-                  hoverable="true"
-                  cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-                  theme="dark"
-              >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-              </Card>
+              <TechNewsFeed />
             </Col>
           </Row>
         </>

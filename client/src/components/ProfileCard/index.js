@@ -5,12 +5,10 @@ import axios from "axios";
 class ProfileCard extends Component {
   state = {
     loading: true,
-    theme: 'dark',
-    user: {
-      github: {}
-    },
+    user: {},
     connections: 0,
-    view: 0
+    view: 0,
+    postCount: 0
   };
 
   componentDidMount() {
@@ -20,7 +18,8 @@ class ProfileCard extends Component {
       .then(response => {
         this.setState({
           user: response.data,
-          loading: false
+          loading: false,
+          postCount: response.data.posts.length
         })
       })
       .catch(error => {
@@ -30,25 +29,28 @@ class ProfileCard extends Component {
 
 
   render() {
-    console.log("Profile Card State: ", this.state.user.github);
+   const loading = this.state.loading;
     return (
 
-      <Card bordered={true} loading={this.state.loading} theme={this.state.theme}>
+      <Card bordered={true} loading={loading}>
 
         <Row justify="center" style={{textAlign: "center"}} >
           <Col span={24}>
-            <Avatar size={125} src={this.state.user.avatar}/>
-            <h5 className="mt-2">{this.state.user.name}</h5>
-            <small>{this.state.user.github.bio}</small>
+            { !loading && <Avatar size={125} src={this.state.user.avatar}/> }
+            { !loading && <h2 style={{marginTop: "5px", marginBottom: "0px"}}>{this.state.user.name}</h2> }
+            { !loading && <small>{this.state.user.github.bio}</small> }
           </Col>
         </Row>
         <Divider />
         <Row gutter={16} justify="center">
-          <Col span={12} style={{textAlign: "center", borderRight: "1px solid #303030"}} >
-            <Statistic title="Connections" value={this.state.connections} />
+          <Col span={8} style={{textAlign: "center", borderRight: "1px solid #303030"}} >
+            { !loading && <Statistic title="Posts" value={this.props.totalPosts} /> }
           </Col>
-          <Col span={12} style={{textAlign: "center"}} >
-            <Statistic title="Views" value={this.state.views} />
+          <Col span={8} style={{textAlign: "center", borderRight: "1px solid #303030"}} >
+            { !loading && <Statistic title="Connections" value={this.state.connections} /> }
+          </Col>
+          <Col span={8} style={{textAlign: "center"}} >
+            { !loading &&  <Statistic title="Views" value={this.state.views} /> }
           </Col>
         </Row>
         <Divider />
