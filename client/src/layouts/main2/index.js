@@ -1,4 +1,4 @@
-import { Layout, Menu } from "antd";
+import { Layout } from "antd";
 import React, { Component } from "react";
 import "./style.css";
 import Navigation from "../../components/Navigation";

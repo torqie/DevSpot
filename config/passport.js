@@ -17,29 +17,25 @@ module.exports = function(passport) {
     });
   });
   passport.use(new GithubStrategy({
-        clientID: "e32cb05bf499f5151825",
-        clientSecret: "5664f3800cf1d5192fbb2b78a8bfa0d976635462",
-        callbackURL: "/api/auth/github/redirect"
+        clientID: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        callbackURL: process.env.GITHUB_CALLBACK_URL
       },
       async(accessToken, refreshToken, profile, cb) => {
         // Find the current user in the User Model
-        console.log(profile._json.id)
         const currentUser = await User.findOne({
           'github.id': profile._json.id
         });
-        console.log("current user", currentUser)
         // Create new user if the database doesnt have the current user.
         if(!currentUser) {
-          console.log("MADE IT")
           const newUser = await new User({
             name: profile._json.name,
+            login: profile._json.login,
             avatar: profile._json.avatar_url,
             provider: 'github',
             github: profile._json
           }).save();
-
           if(newUser) {
-
             return cb(null, newUser)
           }
         }
