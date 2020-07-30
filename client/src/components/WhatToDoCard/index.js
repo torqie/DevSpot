@@ -33,7 +33,7 @@ class WhatToDoCard extends Component {
         <div id="what-to-do" className="card-container" style={{}} >
             <Tabs type="card" >
               <TabPane tab="SHARE AN UPDATE" key="1" >
-                <ShareUpdate updatePostCount={this.updatePostCount} />
+                <ShareUpdate updatePostCount={this.updatePostCount} profileDrawerVisible={this.props.profileDrawerVisible} />
               </TabPane>
               <TabPane tab="Q & A" key="2" >
               <NewQuestionsCard />

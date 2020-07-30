@@ -1,24 +1,92 @@
 import React, { Component } from "react";
-import { Card, Avatar, Divider, Col, Row, Space, Menu, Dropdown } from "antd";
-import { FaCommentAlt, FaThumbsDown, FaThumbsUp, FaEllipsisH } from "react-icons/fa";
+import { Card, Avatar, Divider, Col, Row, Space, Menu, Dropdown, Popover } from "antd";
+import { FaCommentAlt, FaRegCommentAlt ,FaRegThumbsDown, FaThumbsDown, FaRegThumbsUp, FaThumbsUp, FaEllipsisH,  } from "react-icons/fa";
 import "./style.css"
-
-const { Meta } = Card;
-
-
+import axios from 'axios';
 
 class NewsFeedCard extends Component {
+
+  state = {
+    content: '',
+    postLiked: false,
+    postDisliked: false,
+    postLikeCount: 0,
+    postDislikeCount: 0
+  };
+
+  userFromMention = (user, offset, string) => {
+    const username = user.substring(1, user.length).toLowerCase();
+    const userLink = `<a href="/profile/${username.trim()}">${user}</a>`;
+    return userLink;
+  };
+
+  onLikeClick = event => {
+    event.preventDefault();
+    console.log(this.props.post);
+    axios.post(`/api/posts/${this.props.post._id}/like`, {
+      userId: localStorage.getItem("userId")
+    }).then(response => {
+      console.log(response.data);
+      this.setState({
+        postLiked: true,
+        postLikeCount: response.data.likes.length,
+        postDislikeCount: response.data.dislikes.length,
+        postDisliked: false,
+      })
+    }).catch(error => {});
+  };
+
+  onDislikeClick = event => {
+    event.preventDefault();
+    axios.post(`/api/posts/${this.props.post._id}/dislike`, {
+      userId: localStorage.getItem("userId")
+    }).then(response => {
+      this.setState({
+        postLiked: false,
+        postDisliked: true,
+        postLikeCount: response.data.likes.length,
+        postDislikeCount: response.data.dislikes.length,
+      })
+    }).catch(error => {
+      console.log(error);
+    });
+  };
+
+  componentDidMount() {
+    const { post } = this.props;
+
+    const like = post.likes.indexOf(localStorage.getItem("userId"));
+    const dislike = post.dislikes.indexOf(localStorage.getItem("userId"));
+    if(like >= 0) {
+      this.setState({postLiked: true});
+    } else {
+      this.setState({postLiked: false});
+    }
+    if(dislike >= 0) {
+      this.setState({postDisliked: true});
+    } else {
+      this.setState({postDisliked: false});
+    }
+    this.setState({
+      postLikeCount: post.likes.length,
+      postDislikeCount: post.dislikes.length,
+    })
+  }
+
+
   render() {
+    const post = this.props.post;
+
     return (
         <div>
           <Card
             bodyStyle={{padding: 0}}
             style={{marginBottom: "20px"}}
-            title={[<Avatar size="large" src={this.props.author.avatar} style={{marginRight: "10px"}} />, this.props.author.name]}
+            title={[<Avatar size="large" src={post.author.avatar} style={{marginRight: "10px"}} />, post.author.name]}
             extra={
               <Dropdown overlay={
                 <Menu>
-                  {this.props.author._id === localStorage.getItem("userId") ? (
+                  {post.author._id === localStorage.getItem("userId") ? (
                       <Menu.Item key="0">
                         <a href="#">Delete Post</a>
                       </Menu.Item>
@@ -37,9 +105,7 @@ class NewsFeedCard extends Component {
           >
             <Row>
               <Col span={24} style={{padding: "30px"}}>
-                <Meta
-                    description={this.props.content}
-                />
+                <div dangerouslySetInnerHTML={{__html: post.content.replace(/\B@([\w\-]+)/gim, this.userFromMention)}} />
               </Col>
             </Row>
 
@@ -52,11 +118,11 @@ class NewsFeedCard extends Component {
                   paddingBottom: 0
                 }}>
                   <Space>
-                    <a href="#"><FaThumbsUp style={{float: "left", color: "#ffffff"}} /> <span>0</span></a>
+                    {this.state.postLiked ? (<FaThumbsUp style={{cursor: "pointer"}} />) :(<FaRegThumbsUp onClick={this.onLikeClick} style={{cursor: "pointer"}} />)} <span>{this.state.postLikeCount}</span>
                     <Divider type="vertical" />
-                    <a href="#"><FaThumbsDown /> 0</a>
+                    {this.state.postDisliked ? (<FaThumbsDown style={{cursor: "pointer"}} />) :(<FaRegThumbsDown onClick={this.onDislikeClick} style={{cursor: "pointer"}} />)} <span>{this.state.postDislikeCount}</span>
                     <Divider type="vertical" />
-                    <a href="#"><FaCommentAlt /> 2</a>
+                    <FaRegCommentAlt style={{cursor: "pointer"}} /> <span>0</span>
                   </Space>
 
                 </div>

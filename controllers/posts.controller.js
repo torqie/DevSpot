@@ -7,7 +7,7 @@ exports.all = async (req, res) => {
   return res.json(posts);
 };
 
-// Get all users.
+// Create a user.
 exports.create = async (req, res) => {
   console.log(req.body);
   const post = await db.Post.create({
@@ -16,5 +16,21 @@ exports.create = async (req, res) => {
     visibleTo: 'public'
   });
   await db.User.findByIdAndUpdate(req.body.author._id, { $push: {posts: post._id }});
+  return res.json(post);
+};
+
+exports.one = async (req, res) => {
+  const post = await db.Post.findById(req.params.id);
+};
+
+exports.likePost = async (req, res) => {
+  //Check if user is in the dislikes array if so remove and add to likes array
+  console.log(req.body.userId);
+  const post = await db.Post.findByIdAndUpdate(req.params.id, { $addToSet: {likes: req.body.userId }, $pull: { dislikes: req.body.userId }}, {new: true});
+  return res.json(post);
+};
+
+exports.dislikePost = async (req, res) => {
+  const post = await db.Post.findByIdAndUpdate(req.params.id, { $addToSet: {dislikes: req.body.userId }, $pull: { likes: req.body.userId }}, {new: true});
   return res.json(post);
 };

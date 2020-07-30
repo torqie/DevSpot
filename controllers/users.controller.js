@@ -20,6 +20,14 @@ exports.searchByName = async (req, res) => {
   return res.json(users);
 };
 
+// Search for user by name
+exports.findByLogin = async (req, res) => {
+  db.User.findOne({login: req.params.id}).then(response => {
+    return res.json(response);
+  });
+
+};
+
 // Get a user by id.
 exports.one = async (req, res) => {
   const user = await db.User.findById(req.params.id);

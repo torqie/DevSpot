@@ -74,7 +74,7 @@ class App extends Component {
         <Router>
           <AuthRoute exact path="/" component={LoginPage}  layout={AuthLayout}  />
           <AppRoute exact path="/news-feed" component={Home} layout={MainLayout2}  />
-          <AppRoute exact path="/profile" component={Profile} layout={MainLayout2} />
+          <AppRoute exact path="/profile/:id" component={Profile} layout={MainLayout2} />
         </Router>
     );
   }

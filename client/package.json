@@ -22,7 +22,8 @@
     "react-icons": "^3.10.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^2.1.1"
+    "react-scripts": "^2.1.1",
+    "react-string-replace": "^0.4.4"
   },
   "scripts": {
     "start": "craco start",
