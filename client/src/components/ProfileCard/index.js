@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Avatar, Col, Row, Statistic, Card, Divider } from "antd";
 import {  UserOutlined } from '@ant-design/icons';
 import axios from "axios";
+
+
 class ProfileCard extends Component {
   state = {
     loading: true,
