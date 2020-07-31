@@ -68,6 +68,7 @@ class NewQuestionsCard extends Component {
 				<Form>
 					<Row>
 						<Input
+							className="qna-body"
 							style={{ width: '100%', border: 0 }}
 							onChange={this.onChange}
 							placeholder="Ask you question here..."
