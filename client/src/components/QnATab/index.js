@@ -9,7 +9,7 @@ class NewQuestionsCard extends Component {
 	state = {
 		loading: true,
 		showQuestionButton: false,
-		updateText: '',
+		questionText: '',
 		questions: []
 	};
 
@@ -64,6 +64,7 @@ class NewQuestionsCard extends Component {
 	render() {
 		return (
 			<>
+
 				<Form>
 					<Row>
 						<Input
@@ -85,6 +86,7 @@ class NewQuestionsCard extends Component {
 						</Row>
 					}
 				</Form>
+
 				{this.state.questions.length > 0 ? (
 					this.state.questions.map((question, index) => {
 						return <NewsFeedCard key={index} author={question.author} content={question.content} visibleTo={question.visibleTo} />
@@ -107,7 +109,5 @@ class NewQuestionsCard extends Component {
 		);
 	}
 }
-
-
 
 export default NewQuestionsCard;
