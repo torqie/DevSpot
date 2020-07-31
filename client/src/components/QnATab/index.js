@@ -13,15 +13,15 @@ class NewQuestionsCard extends Component {
 		questions: []
 	};
 
-	onChange = target => {
-		if (target.length > 0) {
+	onChange = event => {
+		if (event.target.value.length > 0) {
 			this.setState({
-				questionText: target.value, showQuestionButton
+				questionText: event.target.value, showQuestionButton
 					: true
 			})
 		} else {
 			this.setState({
-				questionText: target.value, showQuestionButton
+				questionText: event.target.value, showQuestionButton
 					: false
 			})
 		}
