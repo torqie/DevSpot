@@ -2,7 +2,7 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
-import LoginForm from "./components/forms/auth/login.form";
+import LoginPage from "./pages/Login";
 import AppRoute from "./AppRoute";
 import AuthRoute from "./AuthRoute";
 import MainLayout2 from "./layouts/main2";
@@ -72,9 +72,9 @@ class App extends Component {
   render() {
     return (
         <Router>
-          <AuthRoute exact path="/" component={LoginForm}  layout={AuthLayout}  />
+          <AuthRoute exact path="/" component={LoginPage}  layout={AuthLayout}  />
           <AppRoute exact path="/news-feed" component={Home} layout={MainLayout2}  />
-          <AppRoute exact path="/profile" component={Profile} layout={MainLayout2} />
+          <AppRoute exact path="/profile/:id" component={Profile} layout={MainLayout2} />
         </Router>
     );
   }

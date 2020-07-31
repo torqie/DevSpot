@@ -3,13 +3,15 @@ import { Col, Row, } from "antd";
 import ProfileCard from "../../components/ProfileCard";
 import WhatToDoCard from "../../components/WhatToDoCard";
 import TechNewsFeed from "../../components/TechNews";
+import ProfileDrawer from "../../components/ProfileDrawer";
 import axios from "axios";
 import "./style.less";
 
 class Home extends Component {
   state = {
     user: {},
-    totalPosts: 0
+    totalPosts: 0,
+    profileDrawerVisible: false
   };
   componentDidMount() {
     this.loadTotalPosts();
@@ -25,10 +27,13 @@ class Home extends Component {
         .catch(error => {
           console.log(error);
         })
-  }
+  };
 
   loadTotalPosts = async () => {
     return this.loadUser();
+  };
+  profileDrawerVisible = visible => {
+    this.setState({profileDrawerVisible: visible})
   };
 
   render() {
@@ -39,12 +44,13 @@ class Home extends Component {
                 <ProfileCard totalPosts={this.state.totalPosts} />
             </Col>
             <Col span={24} md={{span: 12}}>
-              <WhatToDoCard updatePostCount={this.loadUser} />
+              <WhatToDoCard updatePostCount={this.loadUser} profileDrawerVisible={this.profileDrawerVisible} />
             </Col>
             <Col span={0} md={{span: 6}}>
               <TechNewsFeed />
             </Col>
           </Row>
+          <ProfileDrawer profileDrawerVisible={this.state.profileDrawerVisible} />
         </>
   );
   }

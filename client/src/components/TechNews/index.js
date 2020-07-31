@@ -3,10 +3,7 @@ import axios from 'axios'
 import { Card, Carousel, Skeleton } from "antd";
 import List from "antd/es/list";
 import Avatar from "antd/es/avatar";
-const { Meta } = Card;
-
-
-
+import "./style.css"
 
 export default class TechNewsFeed extends Component {
     state = {
@@ -17,6 +14,8 @@ export default class TechNewsFeed extends Component {
     componentDidMount() {
         axios
             .get("https://bing-news-search1.p.rapidapi.com/news?safeSearch=Off&category=Technology&rapidapi-key=" + process.env.REACT_APP_BING_NEWS_SEARCH_API_KEY)
+            //"http://newsapi.org/v2/everything?q=development&sources=the-next-web&language=en&sortBy=popularity&apiKey=" + process.env.REACT_APP_NEWS_API_KEY
+
             .then(response => {
                 this.setState({
                     articles: response.data.value,
@@ -32,20 +31,23 @@ export default class TechNewsFeed extends Component {
         const { loading } = this.state;
         console.log("articles", this.state.articles);
         return (
-            <Skeleton loading={this.state.loading} active avatar={{active: true, size: "large", shape:"square"}}>
-                <Carousel autoplay autoplaySpeed={10000} dots={false} easing="easeOutCubic">
+            <Card id="techcard">
+            <Skeleton loading={this.state.loading} active avatar>
+            <h2 id="techtitle">Latest Tech News</h2>
+                <Carousel autoplay autoplaySpeed={15000} dots={false}>
                     {!loading && this.state.articles.map((article, index) => {
                         return (
                             <List.Item key={index}>
                                 <List.Item.Meta
-                                    avatar={!loading && (<Avatar size={100} shape="square" src={article.image.thumbnail.contentUrl} />)}
                                     title={!loading && (<a href={article.url}>{article.name}</a>)}
+                                    avatar={!loading && (<Avatar size={120} shape="square" src={article.image.thumbnail.contentUrl} />)}
                                     description={!loading && (article.description)}
                                 />
                         </List.Item>
                     )})}
                 </Carousel>
             </Skeleton>
+            </Card>
         )
     }
 }

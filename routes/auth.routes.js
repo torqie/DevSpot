@@ -34,7 +34,10 @@ module.exports = (app, passport) => {
   });
 
 
-  app.get('/api/auth/github', passport.authenticate('github', {session: true}));
+  app.get('/api/auth/github', passport.authenticate('github', {
+    session: true,
+    scope: ['user'],
+  }));
 
 
   app.get(

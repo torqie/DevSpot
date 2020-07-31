@@ -1,0 +1,9 @@
+#techcard {
+height: calc(100% - 68px);
+margin-bottom: 0px;
+}
+
+#techtitle {
+    text-align: center;
+    color:#663399
+}
