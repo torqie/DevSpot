@@ -31,7 +31,6 @@ class ShareUpdate extends Component {
         content: this.state.updateText,
         visibleTo: "public"
       }).then(response => {
-        console.log(response);
         this.loadPosts();
         this.updatePostCount();
         this.setState({loading: false, updateText: ''});
@@ -71,7 +70,8 @@ class ShareUpdate extends Component {
 
   loadPosts = () => {
     axios
-      .get('/api/posts').then(response => {
+      .get('/api/posts')
+      .then(response => {
         console.log("posts: ", response.data);
         this.setState({posts: response.data});
       })
@@ -79,6 +79,8 @@ class ShareUpdate extends Component {
         console.log("Error retrieving posts: ", error);
     })
   };
+
+
 
   componentDidMount() {
     this.loadPosts();
@@ -90,19 +92,19 @@ class ShareUpdate extends Component {
           <Form>
             <Row>
               <Mentions
+                  rows="3"
                   autoSize
                   style={{ width: '100%', border: 0 }}
                   onChange={this.onChange}
                   onSearch={this.onSearch}
-                  onSelect={this.onSelect}
                   placeholder="Whats on your mind? Use @ to mention someone."
                   value={this.state.updateText}
               >
                 { this.state.users.length > 0 ? (
                     this.state.users.map((user, index) => {
                       return (
-                      <option key={user._id} value={user.name}>
-                        <Avatar src={user.avatar} style={{marginRight: "4px"}} />{user.name}
+                      <option key={index} value={user.login}>
+                        <Avatar src={user.avatar} style={{marginRight: "4px"}} />{user.name} <span style={{fontStyle: "italic"}}>[ @{user.login} ]</span>
                       </option>
                     )})
                 ) : null }
@@ -119,13 +121,12 @@ class ShareUpdate extends Component {
               </Row>
             }
           </Form>
+
           {this.state.posts.length > 0 ? (
             this.state.posts.map((post, index) => {
-              return  <NewsFeedCard key={index} author={post.author} content={post.content} visibleTo={post.visibleTo}  />
+              return  <NewsFeedCard key={index} post={post} />
             })
           ) : <Empty />}
-
-
         </>
     );
   }

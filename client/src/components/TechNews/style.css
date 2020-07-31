@@ -1,9 +1,14 @@
 #techcard {
+<<<<<<< HEAD
     height: auto;
     margin-bottom: 15px;
+=======
+height: calc(100% - 68px);
+margin-bottom: 0px;
+>>>>>>> 7fc883fccea165f06d3e3aefe0351f560633594a
 }
 
 #techtitle {
     text-align: center;
-    color:#734b97
+    color:#663399
 }

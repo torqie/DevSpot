@@ -4,7 +4,6 @@ import { Card, Carousel, Skeleton } from "antd";
 import List from "antd/es/list";
 import Avatar from "antd/es/avatar";
 import "./style.css"
-const { Meta } = Card;
 
 export default class TechNewsFeed extends Component {
     state = {
@@ -15,7 +14,12 @@ export default class TechNewsFeed extends Component {
     componentDidMount() {
         axios
             .get("https://bing-news-search1.p.rapidapi.com/news?safeSearch=Off&category=Technology&rapidapi-key=" + process.env.REACT_APP_BING_NEWS_SEARCH_API_KEY)
+<<<<<<< HEAD
             
+=======
+            //"http://newsapi.org/v2/everything?q=development&sources=the-next-web&language=en&sortBy=popularity&apiKey=" + process.env.REACT_APP_NEWS_API_KEY
+
+>>>>>>> 7fc883fccea165f06d3e3aefe0351f560633594a
             .then(response => {
                 this.setState({
                     articles: response.data.value,
@@ -34,7 +38,7 @@ export default class TechNewsFeed extends Component {
             <Card id="techcard">
             <Skeleton loading={this.state.loading} active avatar>
             <h2 id="techtitle">Latest Tech News</h2>
-                <Carousel autoplay autoplaySpeed={5000} dots={false} easing="easeOutCubic">
+                <Carousel autoplay autoplaySpeed={15000} dots={false}>
                     {!loading && this.state.articles.map((article, index) => {
                         return (
                             <List.Item key={index}>

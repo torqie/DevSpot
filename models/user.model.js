@@ -3,10 +3,8 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   name: String,
-  email: String,
+  login: String,
   avatar: String,
-  theme: String,
-  provider: String,
   github: Object,
   friends: [{ type: Schema.Types.ObjectID, ref: 'Friend' }],
   posts: [{ type: Schema.Types.ObjectID, ref: 'Post' }]
