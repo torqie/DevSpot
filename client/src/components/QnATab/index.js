@@ -4,7 +4,7 @@ import NewsFeedCard from "../NewsFeedCard";
 import axios from 'axios'
 import "./style.less";
 
-class NewQuestionsCard extends Component {
+class AskAQuestion extends Component {
 
 	state = {
 		loading: true,
@@ -36,7 +36,6 @@ class NewQuestionsCard extends Component {
 				content: this.state.questionText,
 				visibleTo: "public"
 			}).then(response => {
-				console.log(response);
 				this.loadQuestions();
 				// this.updateQuestionCount();
 				this.setState({ loading: false, questionText: '' });
@@ -103,4 +102,4 @@ class NewQuestionsCard extends Component {
 	}
 }
 
-export default NewQuestionsCard;
+export default AskAQuestion;
