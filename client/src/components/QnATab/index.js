@@ -38,13 +38,17 @@ class NewQuestionsCard extends Component {
 			}).then(response => {
 				console.log(response);
 				this.loadQuestions();
-				this.updateQuestionCount();
+				// this.updateQuestionCount();
 				this.setState({ loading: false, questionText: '' });
 			})
 			.catch(error => {
 				console.log("Error posting new question: ", error);
 			});
 	};
+
+	// updateQuestionCount = () => {
+  //   this.props.updateQuestionCount();
+  // };
 
 	loadQuestions = () => {
 		axios
