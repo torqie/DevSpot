@@ -93,7 +93,7 @@ class AskAQuestion extends Component {
 
 				{this.state.questions.length > 0 ? (
 					this.state.questions.map((question, index) => {
-						return <QuestionCard key={index} post={question} content={question.content} visibleTo={question.visibleTo} />
+						return <QuestionCard key={index} question={question} content={question.content} visibleTo={question.visibleTo} />
 					})
 				) : <Empty />}
 

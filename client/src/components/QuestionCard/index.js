@@ -17,6 +17,7 @@ class QuestionCard extends Component {
 	userFromMention = (user, offset, string) => {
 		const username = user.substring(1, user.length).toLowerCase();
 		const userLink = `<a href="/profile/${username.trim()}">${user}</a>`;
+		
 		return userLink;
 	};
 
@@ -54,9 +55,9 @@ class QuestionCard extends Component {
 
 	componentDidMount() {
 		const { question } = this.props;
-
 		const thumbsUp = question.thumbsUp.indexOf(localStorage.getItem("userId"));
 		const thumbsDown = question.thumbsDown.indexOf(localStorage.getItem("userId"));
+
 		if (thumbsUp >= 0) {
 			this.setState({ thumbsUp: true });
 		} else {
@@ -102,6 +103,7 @@ class QuestionCard extends Component {
 						</Dropdown>
 					}
 				>
+
 					<Row>
 						<Col span={24} style={{ padding: "30px" }}>
 							<div dangerouslySetInnerHTML={{ __html: question.content.replace(/\B@([\w\-]+)/gim, this.userFromMention) }} />
@@ -123,10 +125,10 @@ class QuestionCard extends Component {
 									<Divider type="vertical" />
 									<FaRegCommentAlt style={{ cursor: "pointer" }} /> <span>0</span>
 								</Space>
-
 							</div>
 						</Col>
 					</Row>
+
 				</Card>
 			</div>
 		);
