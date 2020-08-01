@@ -96,17 +96,6 @@ class NewQuestionsCard extends Component {
 
 			</>
 
-			// <div>
-			// 	<form class="qna-body field">
-			// 		<textarea id="qna-text" rows="5" type="text" placeholder="Ask you question here..."></textarea>
-			// 	</form>
-
-			// 	<div class="qna-button">
-			// 		<button type="submit" class="qna-submit">Submit question</button>
-			// 	</div>
-
-			// </div>
-
 		);
 	}
 }
