@@ -11,7 +11,7 @@ exports.all = async (req, res) => {
 exports.create = async (req, res) => {
   console.log(req.body);
   const question = await db.Question.create({
-    author: req.body.author._id,
+    author: req.body.author,
     content: req.body.content,
     visibleTo: 'public'
   });

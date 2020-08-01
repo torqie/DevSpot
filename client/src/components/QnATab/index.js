@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col, Form, Input, Button, Avatar, Empty } from "antd";
-import NewsFeedCard from "../NewsFeedCard";
+import QuestionCard from "../QuestionCard";
 import axios from 'axios'
 import "./style.less";
 
@@ -32,7 +32,7 @@ class AskAQuestion extends Component {
 		this.setState({ loading: true });
 		axios
 			.post('/api/questions', {
-				author: currentUser.data,
+				author: currentUser.data._id,
 				content: this.state.questionText,
 				visibleTo: "public"
 			}).then(response => {
@@ -93,7 +93,7 @@ class AskAQuestion extends Component {
 
 				{this.state.questions.length > 0 ? (
 					this.state.questions.map((question, index) => {
-						return <NewsFeedCard key={index} author={question.author} content={question.content} visibleTo={question.visibleTo} />
+						return <QuestionCard key={index} post={question} content={question.content} visibleTo={question.visibleTo} />
 					})
 				) : <Empty />}
 
