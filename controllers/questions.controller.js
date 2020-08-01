@@ -24,7 +24,7 @@ exports.one = async (req, res) => {
 };
 
 exports.thumbsUpAnswer = async (req, res) => {
-  //Check if user is in the dislikes array if so remove and add to likes array
+  //Check if user is in the thumbsDown array if so remove and add to thumbsUp array
   console.log(req.body.userId);
   const question = await db.Question.findByIdAndUpdate(req.params.id, { $addToSet: {thumbsUp: req.body.userId }, $pull: { thumbsDown: req.body.userId }}, {new: true});
   return res.json(question);
