@@ -95,7 +95,6 @@ class NewQuestionsCard extends Component {
 				) : <Empty />}
 
 			</>
-
 		);
 	}
 }
