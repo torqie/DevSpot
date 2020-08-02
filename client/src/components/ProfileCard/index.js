@@ -13,7 +13,7 @@ class ProfileCard extends Component {
   };
 
   componentDidMount() {
-    this.setState({loading: true});
+    this.setState({ loading: true });
     axios
       .get(`/api/users/${localStorage.getItem("userId")}`)
       .then(response => {
@@ -30,34 +30,38 @@ class ProfileCard extends Component {
 
 
   render() {
-   const loading = this.state.loading;
+    const loading = this.state.loading;
     return (
 
       <Card bordered={true} loading={loading}>
 
-        <Row justify="center" style={{textAlign: "center"}} >
+        <Row justify="center" style={{ textAlign: "center" }} >
           <Col span={24}>
-            { !loading && <Avatar size={125} src={this.state.user.avatar}/> }
-            { !loading && <h2 style={{marginTop: "5px", marginBottom: "0px"}}>{this.state.user.name}</h2> }
-            { !loading && <small>{this.state.user.github.bio}</small> }
+            {!loading && <Avatar size={125} src={this.state.user.avatar} />}
+            {!loading && <h2 style={{ marginTop: "5px", marginBottom: "0px" }}>{this.state.user.name}</h2>}
+            {!loading && <small>{this.state.user.github.bio}</small>}
           </Col>
         </Row>
         <Divider />
         <Row gutter={16} justify="center">
-          <Col span={8} style={{textAlign: "center", borderRight: "1px solid #303030"}} >
-            { !loading && <Statistic title="Posts" value={this.props.totalPosts} /> }
+          <Col span={8} style={{ textAlign: "center", borderRight: "1px solid #303030" }} >
+            {!loading && <Statistic title="Posts" value={this.props.totalPosts} />}
           </Col>
-          <Col span={8} style={{textAlign: "center", borderRight: "1px solid #303030"}} >
-            { !loading && <Statistic title="Connections" value={this.state.connections} /> }
+          <Col span={8} style={{ textAlign: "center", borderRight: "1px solid #303030" }} >
+            {!loading && <Statistic title="Connections" value={this.state.connections} />}
           </Col>
-          <Col span={8} style={{textAlign: "center"}} >
-            { !loading &&  <Statistic title="Views" value={this.state.views} /> }
+          <Col span={8} style={{ textAlign: "center" }} >
+            {!loading && <Statistic title="Views" value={this.state.views} />}
           </Col>
         </Row>
         <Divider />
         <Row gutter={16} justify="center">
           <Col>
-            <a href="/profile">VIEW MY PROFILE</a>
+            {/* <a href="/profile/:id">VIEW MY PROFILE</a> */}
+            {"/profile/:id"
+              ? <a href="/profile/:id">VIEW MY PROFILE</a>
+              : <a href="/">RETRUN HOME</a>
+            }
           </Col>
         </Row>
       </Card>
