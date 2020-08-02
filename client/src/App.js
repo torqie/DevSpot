@@ -1,5 +1,5 @@
 
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import LoginPage from "./pages/Login";
@@ -12,6 +12,15 @@ import axios from "axios";
 import './App.less';
 
 const {Component} = require("react");
+
+// Add a request interceptor
+axios.interceptors.request.use(function (config) {
+  const token = localStorage.getItem("accessToken");
+  config.headers.Authorization =  token;
+  axios.defaults.headers.common['Authorization'] = token;
+
+  return config;
+});
 
 class App extends Component {
   state = {
@@ -45,10 +54,9 @@ class App extends Component {
       .then(response => {
 
         if(response.data.success) {
-          console.log("Check Login Status: ", response.data.success);
-          //Set the local storage
           localStorage.setItem("loggedIn", "true");
           localStorage.setItem("userId", response.data.user._id);
+          localStorage.setItem("accessToken", response.data.user.accessToken);
 
           // Set the state
           this.setState({
@@ -58,10 +66,9 @@ class App extends Component {
         } else {
           localStorage.removeItem("loggedIn");
           localStorage.removeItem("userId");
-          this.setState({
-            loggedIn: false,
-
-          });
+          localStorage.removeItem("accessToken");
+          this.setState({loggedIn: false});
+          return <Redirect to="/" />
         }
       })
       .catch(error => {

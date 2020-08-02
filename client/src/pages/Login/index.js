@@ -6,6 +6,7 @@ class Index extends Component {
     return (
         <div>
           <Button type="primary" href="http://localhost:3001/api/auth/github" >Login With Github</Button>
+          <Button type="primary" href="/api/auth/github" >Login With Github</Button>
         </div>
     );
   }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Row, Col, Form, Mentions, Button, Avatar, Empty } from "antd";
 import NewsFeedCard from "../NewsFeedCard";
 import axios from "axios";
+import API from '../../utils/API';
 
 class ShareUpdate extends Component {
 
@@ -23,21 +24,22 @@ class ShareUpdate extends Component {
   };
 
   onSubmit = async () => {
-    const currentUser = await axios.get(`/api/users/${localStorage.getItem("userId")}`);
+    const currentUser = await API.getUser(localStorage.getItem("userId"));
+
+
+
     this.setState({loading: true});
-    axios
-      .post('/api/posts',{
-        author: currentUser.data,
-        content: this.state.updateText,
-        visibleTo: "public"
-      }).then(response => {
+    API.createPost({
+      author: currentUser.data,
+      content: this.state.updateText,
+      visibleTo: "public"
+    }).then(response => {
         this.loadPosts();
         this.updatePostCount();
         this.setState({loading: false, updateText: ''});
-      })
-      .catch(error => {
+    }).catch(error => {
         console.log("Error posting new update: ", error);
-      });
+    });
   };
 
   updatePostCount = () => {

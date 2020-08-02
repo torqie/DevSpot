@@ -6,6 +6,8 @@ const userSchema = new Schema({
   login: String,
   avatar: String,
   github: Object,
+  accessToken: String,
+  refreshToken: String,
   friends: [{ type: Schema.Types.ObjectID, ref: 'Friend' }],
   posts: [{ type: Schema.Types.ObjectID, ref: 'Post' }]
 });

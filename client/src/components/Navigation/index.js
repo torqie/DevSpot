@@ -14,12 +14,13 @@ class Navigation extends Component {
  };
 
   logout = () => {
-    localStorage.removeItem("loggedIn");
-    localStorage.removeItem("userId");
+
     axios
       .get('/api/auth/logout')
       .then(response => {
         if(response.data.success) {
+          localStorage.removeItem("loggedIn");
+          localStorage.removeItem("userId");
           window.location.reload();
         }
       })

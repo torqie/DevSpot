@@ -1,7 +1,8 @@
 
-
+const db = require("../models");
 module.exports = (app, passport) => {
-// when login is successful, retrieve user info
+
+  // when login is successful, retrieve user info
   app.get("/api/auth/login/success", (req, res) => {
     if(req.hasOwnProperty('user')){
       res.json({
@@ -19,8 +20,9 @@ module.exports = (app, passport) => {
 
   });
 
+
   // when login failed, send failed msg
-  app.get("api/auth/login/failed", (req, res) => {
+  app.get("/api/auth/login/failed", (req, res) => {
     res.status(401).json({
       success: false,
       message: "user failed to authenticate."
@@ -40,10 +42,9 @@ module.exports = (app, passport) => {
   }));
 
 
-  app.get(
-      "/api/auth/github/redirect",
+  app.get("/api/auth/github/redirect",
       passport.authenticate("github", {
-        successRedirect: process.env.CLIENT_HOME_PAGE_URL,
+        successRedirect: "/news-feed",
         failureRedirect: "/api/auth/login/failed"
       })
   );

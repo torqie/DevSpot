@@ -30,7 +30,7 @@ class MainLayout2 extends Component {
                 style={{
                   marginTop: 40,
                   padding: '0 40px',
-                  minHeight: 280,
+                  minHeight: '100vh',
                 }}
 
             >

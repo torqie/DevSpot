@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Card, Avatar, Divider, Col, Row, Space, Menu, Dropdown, Popover } from "antd";
 import { FaCommentAlt, FaRegCommentAlt ,FaRegThumbsDown, FaThumbsDown, FaRegThumbsUp, FaThumbsUp, FaEllipsisH,  } from "react-icons/fa";
 import "./style.css"
-import axios from 'axios';
+import API from "../../utils/API"
 
 class NewsFeedCard extends Component {
 
@@ -22,25 +22,23 @@ class NewsFeedCard extends Component {
 
   onLikeClick = event => {
     event.preventDefault();
-    console.log(this.props.post);
-    axios.post(`/api/posts/${this.props.post._id}/like`, {
-      userId: localStorage.getItem("userId")
-    }).then(response => {
+    API.likePost(this.props.post._id, {userId: localStorage.getItem("userId")})
+   .then(response => {
       console.log(response.data);
       this.setState({
         postLiked: true,
+        postDisliked: false,
         postLikeCount: response.data.likes.length,
         postDislikeCount: response.data.dislikes.length,
-        postDisliked: false,
+
       })
     }).catch(error => {});
   };
 
   onDislikeClick = event => {
     event.preventDefault();
-    axios.post(`/api/posts/${this.props.post._id}/dislike`, {
-      userId: localStorage.getItem("userId")
-    }).then(response => {
+    API.dislikePost(this.props.post._id, {userId: localStorage.getItem("userId")})
+    .then(response => {
       this.setState({
         postLiked: false,
         postDisliked: true,
