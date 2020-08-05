@@ -55,6 +55,7 @@ class QuestionCard extends Component {
 
 	componentDidMount() {
 		const { question } = this.props;
+		const answers = question.answers.indexOf(localStorage.getItem("userId"));
 		const thumbsUp = question.thumbsUp.indexOf(localStorage.getItem("userId"));
 		const thumbsDown = question.thumbsDown.indexOf(localStorage.getItem("userId"));
 

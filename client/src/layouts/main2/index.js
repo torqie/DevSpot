@@ -36,7 +36,7 @@ class MainLayout2 extends Component {
             >
               {this.props.children}
             </Content>
-          <Footer  style={{ textAlign: 'center' }}>Designed and Developed by WolffsRockstars. T Freaking M</Footer>
+          <Footer  style={{ textAlign: 'center' }}>Designed and Developed by A and the Jays. T Freaking M</Footer>
           </Layout>
     );
   }
