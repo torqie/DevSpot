@@ -1,9 +1,6 @@
 .main-footer{
     color: white;
-    background-color: blueviolet;
     padding-top: 3em;
-    position: relative;
-    bottom: 0;
     width: 100%;
 }
 
@@ -15,4 +12,5 @@
 
 .content-wrap {
     flex: 1;
+    flex-direction: column;
 }

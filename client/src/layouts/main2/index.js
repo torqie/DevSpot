@@ -2,8 +2,8 @@ import { Layout } from "antd";
 import React, { Component } from "react";
 import "./style.css";
 import Navigation from "../../components/Navigation";
-import Footer from "../../components/Footer/footer";
-const { Header, Content } = Layout;
+import PageFooter from "../../components/Footer/footer";
+const { Header, Content, Footer } = Layout;
 
 
 class MainLayout2 extends Component {
@@ -40,7 +40,9 @@ class MainLayout2 extends Component {
 
         <div className="page-container">
           <div className="content-wrap">
-            <Footer />
+            <Footer theme={this.state.theme}>
+              <PageFooter />
+            </Footer>
           </div>
         </div>
 
