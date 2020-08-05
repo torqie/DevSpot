@@ -43,10 +43,10 @@ class Profile extends Component {
     return (
         <>
           <Row gutter={{xs: 8, sm: 16, md: 24, lg: 32}}>
-            <Col span={0} md={{span: 8}}>
+            <Col span={24} md={{span: 8}}><h1>My Profile</h1>
           <ProfileCard totalPosts={this.state.posts.length} />
             </Col>
-            <Col span={0} md={{span: 14}}>
+            <Col span={24} md={{span: 16}}><h1>My Posts</h1>
           {this.state.posts.length > 0 ? (
             this.state.posts.map(post => {
               return <NewsFeedCard post = {post} />

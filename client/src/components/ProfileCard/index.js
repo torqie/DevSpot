@@ -57,11 +57,11 @@ class ProfileCard extends Component {
         <Divider />
         <Row gutter={16} justify="center">
           <Col>
-            {/* <a href="/profile/:id">VIEW MY PROFILE</a> */}
-            {"/profile/:id"
+            <a href="/profile/:id">VIEW MY PROFILE</a>
+            {/* {window.location.href = "/news-feed"
               ? <a href="/profile/:id">VIEW MY PROFILE</a>
               : <a href="/">RETRUN HOME</a>
-            }
+            } */}
           </Col>
         </Row>
       </Card>
