@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Card, Avatar, Divider, Col, Row, Space, Menu, Dropdown, Popover } from "antd";
 import { FaCommentAlt, FaRegCommentAlt, FaRegThumbsDown, FaThumbsDown, FaRegThumbsUp, FaThumbsUp, FaEllipsisH, } from "react-icons/fa";
-// import "./style.css"
 import axios from 'axios';
 
 class QuestionCard extends Component {
@@ -17,7 +16,6 @@ class QuestionCard extends Component {
 	userFromMention = (user, offset, string) => {
 		const username = user.substring(1, user.length).toLowerCase();
 		const userLink = `<a href="/profile/${username.trim()}">${user}</a>`;
-		
 		return userLink;
 	};
 

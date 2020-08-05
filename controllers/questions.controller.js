@@ -23,6 +23,10 @@ exports.one = async (req, res) => {
   const question = await db.Question.findById(req.params.id);
 };
 
+exports.delete = async (req, res) => {
+  const question = await db.Question.findById(req.params.id);
+};
+
 exports.thumbsUpAnswer = async (req, res) => {
   //Check if user is in the thumbsDown array if so remove and add to thumbsUp array
   console.log(req.body.userId);

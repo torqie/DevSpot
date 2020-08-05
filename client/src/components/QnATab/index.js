@@ -46,8 +46,8 @@ class AskAQuestion extends Component {
 	};
 
 	// updateQuestionCount = () => {
-  //   this.props.updateQuestionCount();
-  // };
+	//   this.props.updateQuestionCount();
+	// };
 
 	loadQuestions = () => {
 		axios
@@ -61,6 +61,7 @@ class AskAQuestion extends Component {
 	};
 
 	componentDidMount() {
+		this.loadQuestions({})
 		this.setState({ loading: false })
 	};
 
