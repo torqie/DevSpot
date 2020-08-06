@@ -27,14 +27,14 @@ exports.delete = async (req, res) => {
   const question = await db.Question.findById(req.params.id);
 };
 
-exports.thumbsUpAnswer = async (req, res) => {
-  //Check if user is in the thumbsDown array if so remove and add to thumbsUp array
-  console.log(req.body.userId);
-  const question = await db.Question.findByIdAndUpdate(req.params.id, { $addToSet: {thumbsUp: req.body.userId }, $pull: { thumbsDown: req.body.userId }}, {new: true});
-  return res.json(question);
-};
+// exports.thumbsUpAnswer = async (req, res) => {
+//   //Check if user is in the thumbsDown array if so remove and add to thumbsUp array
+//   console.log(req.body.userId);
+//   const question = await db.Question.findByIdAndUpdate(req.params.id, { $addToSet: {thumbsUp: req.body.userId }, $pull: { thumbsDown: req.body.userId }}, {new: true});
+//   return res.json(question);
+// };
 
-exports.thumbsDownAnswer = async (req, res) => {
-  const question = await db.Question.findByIdAndUpdate(req.params.id, { $addToSet: {thumbsDown: req.body.userId }, $pull: { thumbsUp: req.body.userId }}, {new: true});
-  return res.json(question);
-};
+// exports.thumbsDownAnswer = async (req, res) => {
+//   const question = await db.Question.findByIdAndUpdate(req.params.id, { $addToSet: {thumbsDown: req.body.userId }, $pull: { thumbsUp: req.body.userId }}, {new: true});
+//   return res.json(question);
+// };
