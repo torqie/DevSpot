@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Avatar, Col, Row, Statistic, Card, Divider } from "antd";
 import axios from "axios";
+import ProfileButton from "../ProfileButton"
 
 
 class ProfileCard extends Component {
@@ -57,11 +58,8 @@ class ProfileCard extends Component {
         <Divider />
         <Row gutter={16} justify="center">
           <Col>
-            <a href="/profile/:id">VIEW MY PROFILE</a>
-            {/* {window.location.href = "/news-feed"
-              ? <a href="/profile/:id">VIEW MY PROFILE</a>
-              : <a href="/">RETRUN HOME</a>
-            } */}
+            {/* <a href="/profile/:id">VIEW MY PROFILE</a> */}
+           <ProfileButton />
           </Col>
         </Row>
       </Card>
