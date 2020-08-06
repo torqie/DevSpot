@@ -9,6 +9,9 @@ const questionSchema = new Schema({
     author: { type: Schema.Types.ObjectID, ref: 'User' }, // Author of the answer
     content: { type: String, required: true }, // Answer content
     accepted: { type: Boolean, default: false }, // Answer was accepted
+
+    // For future work on thumbs-up/down on questions and answers:
+
     // thumbsUp: [{ type: Schema.Types.ObjectID, ref: "User" }], // Array of users who thumbs up the answer
     // thumbsDown: [{ type: Schema.Types.ObjectID, ref: "User" }], // Array of users who thumbs down the answer
   }],

@@ -18,59 +18,62 @@ class QuestionCard extends Component {
 		const userLink = `<a href="/profile/${username.trim()}">${user}</a>`;
 		return userLink;
 	};
+	// For future work on thumbs-up/down on questions and answers:
 
-	thumbsUpClick = event => {
-		event.preventDefault();
-		console.log(this.props.question);
-		axios.question(`/api/questions/${this.props.question._id}/thumbsUp`, {
-			userId: localStorage.getItem("userId")
-		}).then(response => {
-			console.log(response.data);
-			this.setState({
-				thumbsUp: true,
-				thumbsUpCount: response.data.thumbsUp.length,
-				thumbsDownCount: response.data.thumbsDown.length,
-				thumbsDown: false,
-			})
-		}).catch(error => { });
-	};
+	// thumbsUpClick = event => {
+	// 	event.preventDefault();
+	// 	console.log(this.props.question);
+	// 	axios.question(`/api/questions/${this.props.question._id}/thumbsUp`, {
+	// 		userId: localStorage.getItem("userId")
+	// 	}).then(response => {
+	// 		console.log(response.data);
+	// 		this.setState({
+	// 			thumbsUp: true,
+	// 			thumbsUpCount: response.data.thumbsUp.length,
+	// 			thumbsDownCount: response.data.thumbsDown.length,
+	// 			thumbsDown: false,
+	// 		})
+	// 	}).catch(error => { });
+	// };
 
-	thumbsDownClick = event => {
-		event.preventDefault();
-		axios.question(`/api/questions/${this.props.question._id}/thumbsDown`, {
-			userId: localStorage.getItem("userId")
-		}).then(response => {
-			this.setState({
-				thumbsUp: false,
-				thumbsDown: true,
-				thumbsUpCount: response.data.thumbsUp.length,
-				thumbsDownCount: response.data.thumbsDown.length,
-			})
-		}).catch(error => {
-			console.log(error);
-		});
-	};
+	// thumbsDownClick = event => {
+	// 	event.preventDefault();
+	// 	axios.question(`/api/questions/${this.props.question._id}/thumbsDown`, {
+	// 		userId: localStorage.getItem("userId")
+	// 	}).then(response => {
+	// 		this.setState({
+	// 			thumbsUp: false,
+	// 			thumbsDown: true,
+	// 			thumbsUpCount: response.data.thumbsUp.length,
+	// 			thumbsDownCount: response.data.thumbsDown.length,
+	// 		})
+	// 	}).catch(error => {
+	// 		console.log(error);
+	// 	});
+	// };
 
 	componentDidMount() {
 		const { question } = this.props;
 		const answers = question.answers.indexOf(localStorage.getItem("userId"));
-		const thumbsUp = question.thumbsUp.indexOf(localStorage.getItem("userId"));
-		const thumbsDown = question.thumbsDown.indexOf(localStorage.getItem("userId"));
+		// For future work on thumbs-up/down on questions and answers:
 
-		if (thumbsUp >= 0) {
-			this.setState({ thumbsUp: true });
-		} else {
-			this.setState({ thumbsUp: false });
-		}
-		if (thumbsDown >= 0) {
-			this.setState({ thumbsDown: true });
-		} else {
-			this.setState({ thumbsDown: false });
-		}
-		this.setState({
-			thumbsUpCount: question.thumbsUp.length,
-			thumbsDownCount: question.thumbsDown.length,
-		})
+		// const thumbsUp = question.thumbsUp.indexOf(localStorage.getItem("userId"));
+		// const thumbsDown = question.thumbsDown.indexOf(localStorage.getItem("userId"));
+
+		// if (thumbsUp >= 0) {
+		// 	this.setState({ thumbsUp: true });
+		// } else {
+		// 	this.setState({ thumbsUp: false });
+		// }
+		// if (thumbsDown >= 0) {
+		// 	this.setState({ thumbsDown: true });
+		// } else {
+		// 	this.setState({ thumbsDown: false });
+		// }
+		// this.setState({
+		// 	thumbsUpCount: question.thumbsUp.length,
+		// 	thumbsDownCount: question.thumbsDown.length,
+		// })
 	}
 
 	render() {
