@@ -7,10 +7,12 @@ class QuestionCard extends Component {
 
 	state = {
 		content: '',
-		thumbsUp: false,
-		thumbsDown: false,
-		thumbsUpCount: 0,
-		thumbsDownCount: 0
+		// For future work on thumbs-up/down on questions and answers:
+
+		// thumbsUp: false,
+		// thumbsDown: false,
+		// thumbsUpCount: 0,
+		// thumbsDownCount: 0
 	};
 
 	userFromMention = (user, offset, string) => {
@@ -121,10 +123,12 @@ class QuestionCard extends Component {
 								paddingBottom: 0
 							}}>
 								<Space>
-									{this.state.thumbsUp ? (<FaThumbsUp style={{ cursor: "pointer" }} />) : (<FaRegThumbsUp onClick={this.thumbsUpClick} style={{ cursor: "pointer" }} />)} <span>{this.state.thumbsUpCount}</span>
+									{/* For future work on thumbs-up/down on questions and answers: */}
+
+									{/* {this.state.thumbsUp ? (<FaThumbsUp style={{ cursor: "pointer" }} />) : (<FaRegThumbsUp onClick={this.thumbsUpClick} style={{ cursor: "pointer" }} />)} <span>{this.state.thumbsUpCount}</span>
 									<Divider type="vertical" />
 									{this.state.thumbsDown ? (<FaThumbsDown style={{ cursor: "pointer" }} />) : (<FaRegThumbsDown onClick={this.thumbsDownClick} style={{ cursor: "pointer" }} />)} <span>{this.state.thumbsDownCount}</span>
-									<Divider type="vertical" />
+									<Divider type="vertical" /> */}
 									<FaRegCommentAlt style={{ cursor: "pointer" }} /> <span>0</span>
 								</Space>
 							</div>
