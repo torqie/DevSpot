@@ -6,17 +6,15 @@ class ProfileButton extends Component {
         const isProfileOn = window.location.href.includes("profile");
         let link;
         if (isProfileOn) {
-            link = <a href="/">Return Home</a>
+            link = <a href="/">RETURN HOME</a>
         } else {
             link = <a href={`/profile/${localStorage.getItem("userId")}`}>VIEW MY PROFILE</a>;
         }
         return (
             <div>
                 {link}
-
             </div>
         )
-
     }
 }
 export default ProfileButton;
