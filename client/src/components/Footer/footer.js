@@ -5,13 +5,13 @@ import { Col, Row } from "antd"
 const Footer = () => {
     return (
         <>
-            <div className="main-footer">
-                <div className="container">
+            <footer className="rc-footer rc-footer-dark">
+                <section className="rc-footer-columns">
                     <Row style={{ textAlign: "center" }}>
                         <Col span={8}>
                             <h4 className={{ textAlign: "center" }}>
                                 Resources
-                    </h4>
+                            </h4>
                             <ul className="list-unstyled">
                                 <li>Find a Bootcamp</li>
                                 <li>Learning Resources</li>
@@ -22,7 +22,7 @@ const Footer = () => {
                         <Col span={8}>
                             <h4 className={{ textAlign: "center" }}>
                                 Community
-                    </h4>
+                            </h4>
                             <ul className="list-unstyled">
                                 <li>Administration</li>
                                 <li>Partnered Programs</li>
@@ -33,17 +33,17 @@ const Footer = () => {
                         <Col span={8}>
                             <h4>
                                 Help
-                    </h4>
+                            </h4>
                             <ul className="list-unstyled">
                                 <li>Contact a Resource</li>
-                                <li></li>
-                                <li>3333</li>
+                                <li>GitHub</li>
+                                <li>Chat Room</li>
                             </ul>
                         </Col>
 
                     </Row>
                     {/* Column1 */}
-                </div>
+                </section>
                 <hr />
                 <div className="col">
                     <p className="col-sm">
@@ -51,7 +51,7 @@ const Footer = () => {
                     </p>
                 </div>
 
-            </div>
+            </footer>
 
         </>
     )

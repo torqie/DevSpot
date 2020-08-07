@@ -18,11 +18,11 @@
   margin:0;
 }
 
-.main-footer{
+.footer{
   margin-top: 1rem;
   padding: 1rem;
   background-color: rgb(24, 24, 24);
-  position: fixed;
+  /* position: ; */
   bottom: 0;
   left: 0;
   width: 100%;
