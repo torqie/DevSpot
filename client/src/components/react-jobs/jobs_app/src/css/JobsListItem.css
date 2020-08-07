@@ -1,0 +1,25 @@
+.JobListItem {
+        border : 2px solid #333;
+        border-radius : 3px;
+        height : 40px;
+        padding : 15px;
+        margin : 2px;
+        cursor: pointer ;
+        transition : background-color 0.4s;
+}
+
+.JobListItem:hover{
+    background-color: #eef
+}
+
+.JobListItem .left {
+    float : left;
+    text-align : left;
+    width : 50%
+}
+
+.JobListItem .right {
+    float : right;
+    text-align : right;
+    width : 50%
+}
