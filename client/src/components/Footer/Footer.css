@@ -1,16 +1,25 @@
-.footer{
-    color: white;
-    padding-top: 3em;
-    width: 100%;
-}
-
-.page-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
 .content-wrap {
     flex: 1;
     flex-direction: column;
 }
+
+.footer{
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: rgb(24, 24, 24);;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    color: white;
+    padding-top: 3em;
+    font-size: 18px;
+    line-height: 35px;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }

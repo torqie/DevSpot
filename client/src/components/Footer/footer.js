@@ -1,13 +1,16 @@
 import React from "react"
 import "./Footer.css"
 import { Col, Row } from "antd"
+import { SearchOutlined } from '@ant-design/icons';
+import { Typography } from 'antd';
+const { Paragraph } = Typography;
 
 const Footer = () => {
     return (
         <>
-            <footer className="rc-footer rc-footer-dark">
+            <div className="footer">
                 <section className="rc-footer-columns">
-                    <Row style={{ textAlign: "center" }}>
+                    <Row justify="center" style={{textAlign: "left"}}>
                         <Col span={8}>
                             <h4 className={{ textAlign: "center" }}>
                                 Resources
@@ -23,10 +26,10 @@ const Footer = () => {
                             <h4 className={{ textAlign: "center" }}>
                                 Community
                             </h4>
-                            <ul className="list-unstyled">
-                                <li>Administration</li>
-                                <li>Partnered Programs</li>
-                                <li>Success Stories</li>
+                            <ul className="list-unstyled">  
+                                <li>Find a Bootcamp <SearchOutlined /></li>                                       
+                                <li>Partnered Programs </li>
+                                <li>Testamonials <DollarCircleOutlined /></li>
                             </ul>
                         </Col>
 
@@ -35,9 +38,9 @@ const Footer = () => {
                                 Help
                             </h4>
                             <ul className="list-unstyled">
-                                <li>Contact a Resource</li>
-                                <li>GitHub</li>
-                                <li>Chat Room</li>
+                                <li>Feedback Management</li>
+                                <li>Security</li>
+                                <li>Contact a Resource <MessageOutlined /></li>
                             </ul>
                         </Col>
 
@@ -51,7 +54,7 @@ const Footer = () => {
                     </p>
                 </div>
 
-            </footer>
+            </div>
 
         </>
     )
