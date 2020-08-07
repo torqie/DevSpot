@@ -2,8 +2,12 @@ import React from "react"
 import "./Footer.css"
 import { Col, Row } from "antd"
 import { SearchOutlined } from '@ant-design/icons';
-import { Typography } from 'antd';
-const { Paragraph } = Typography;
+import { AppstoreOutlined } from '@ant-design/icons';
+import { DollarCircleOutlined } from '@ant-design/icons';
+import { SafetyCertificateOutlined } from '@ant-design/icons';
+import { MessageOutlined } from '@ant-design/icons';
+import { AuditOutlined } from '@ant-design/icons';
+
 
 const Footer = () => {
     return (
@@ -12,9 +16,9 @@ const Footer = () => {
                 <section className="rc-footer-columns">
                     <Row justify="center" style={{textAlign: "left"}}>
                         <Col span={8}>
-                            <h4 className={{ textAlign: "center" }}>
+                            <h2 className={{ textAlign: "center" }}>
                                 Resources
-                            </h4>
+                            </h2>
                             <ul className="list-unstyled">
                                 <li>Find a Bootcamp</li>
                                 <li>Learning Resources</li>
@@ -23,32 +27,33 @@ const Footer = () => {
                         </Col>
 
                         <Col span={8}>
-                            <h4 className={{ textAlign: "center" }}>
+                            <h2 className={{ textAlign: "center" }}>
                                 Community
-                            </h4>
+                            </h2>
                             <ul className="list-unstyled">  
-                                <li>Find a Bootcamp <SearchOutlined /></li>                                       
+                                <li><SearchOutlined />Find a Bootcamp </li>                                       
                                 <li>Partnered Programs </li>
-                                <li>Testamonials <DollarCircleOutlined /></li>
+                                <li><DollarCircleOutlined /> Testamonials </li>
                             </ul>
                         </Col>
 
                         <Col span={8}>
-                            <h4>
+                            <h2>
                                 Help
-                            </h4>
+                            </h2>
                             <ul className="list-unstyled">
-                                <li>Feedback Management</li>
-                                <li>Security</li>
-                                <li>Contact a Resource <MessageOutlined /></li>
+                                <li><AppstoreOutlined /> Site Navigation </li>
+                                <li><AuditOutlined /> Feedback Management </li>
+                                <li><SafetyCertificateOutlined /> Security </li>
+                                <li><MessageOutlined /> Contact a Resource </li>
                             </ul>
                         </Col>
 
                     </Row>
                     {/* Column1 */}
                 </section>
-                <hr />
-                <div className="col">
+                <br></br>
+                <div className="col terms" >
                     <p className="col-sm">
                         &copy;{new Date().getFullYear()} Devspot | All rights reserved | Terms of service | Privacy
                     </p>

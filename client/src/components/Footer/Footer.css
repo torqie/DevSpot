@@ -6,7 +6,7 @@
 .footer{
     margin-top: 1rem;
     padding: 1rem;
-    background-color: rgb(24, 24, 24);;
+    background-color: rgb(24, 24, 24);
     position: relative;
     bottom: 0;
     left: 0;
@@ -16,10 +16,22 @@
     padding-top: 3em;
     font-size: 18px;
     line-height: 35px;
+    border-top: solid #663399;
+    
+    
+
   }
 
-  ul {
+ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
+
+.terms {
+    border-top: solid #663399;
+}
+
+h2 {
+    color: orange;
+}
