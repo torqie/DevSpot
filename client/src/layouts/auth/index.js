@@ -32,7 +32,7 @@ function AuthLayout({children}) {
     }
 }} />
 
-<div className="container login" style={{
+<div className="container" style={{
         position:"absolute",
         top: 0,
         left: 0,
@@ -42,10 +42,13 @@ function AuthLayout({children}) {
           
         <div className="row">
           <div className="col">
+          <img src="../../images/DevspotLogo.png" alt="logo" className="center"/>
+          </div>
+          <div className="col">
             <h1>Connect with Bootcampers around the world.</h1>
           </div>
           <div className="col">
-            <h1>Sign up </h1>
+          
             {children}
           </div>
         </div>
