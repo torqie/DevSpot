@@ -1,20 +1,24 @@
 import React from "react"
 import "./Footer.css"
 import { Col, Row } from "antd"
-import { SearchOutlined } from '@ant-design/icons';
-import { AppstoreOutlined } from '@ant-design/icons';
-import { DollarCircleOutlined } from '@ant-design/icons';
-import { SafetyCertificateOutlined } from '@ant-design/icons';
-import { MessageOutlined } from '@ant-design/icons';
-import { AuditOutlined } from '@ant-design/icons';
-import { BugOutlined } from '@ant-design/icons';
-import { InstagramOutlined } from '@ant-design/icons';
-import { GithubFilled } from '@ant-design/icons';
-import { YoutubeFilled } from '@ant-design/icons';
-import { TwitterOutlined } from '@ant-design/icons';
-import { FacebookOutlined } from '@ant-design/icons';
-import { RocketOutlined } from '@ant-design/icons';
-import { BookOutlined } from '@ant-design/icons';
+import { 
+    SearchOutlined, 
+    BookOutlined, 
+    RocketOutlined, 
+    FacebookOutlined, 
+    TwitterOutlined, 
+    YoutubeFilled, 
+    GithubFilled, 
+    InstagramOutlined, 
+    BugOutlined, 
+    AuditOutlined, 
+    MessageOutlined, 
+    SafetyCertificateOutlined, 
+    DollarCircleOutlined,
+     AppstoreOutlined
+  } from '@ant-design/icons';
+
+
 
 
 const Footer = () => {

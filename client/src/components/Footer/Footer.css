@@ -32,18 +32,3 @@ ul {
     border-top: solid #663399;
 }
 
-
-
-.list-unstyled1:hover .header1 { 
-    color: orange;
-  }
-
-.list-unstyled2:hover .header2 { 
-    color: yellow;
-  }
-
-.list-unstyled3:hover .header3 { 
-    color: green;
-  }
-
-
