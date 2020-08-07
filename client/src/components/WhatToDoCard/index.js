@@ -4,7 +4,7 @@ import "./style.less";
 import NewConnectionsCard from "../NewConnections";
 import ShareUpdate from "../ShareUpdate";
 import axios from  "axios";
-import NewQuestionsCard from "../QnATab";
+import AskAQuestion from "../QnATab";
 const { TabPane } = Tabs;
 
 class WhatToDoCard extends Component {
@@ -36,7 +36,7 @@ class WhatToDoCard extends Component {
                 <ShareUpdate updatePostCount={this.updatePostCount} profileDrawerVisible={this.props.profileDrawerVisible} />
               </TabPane>
               <TabPane tab="Q & A" key="2" >
-              <NewQuestionsCard />
+              <AskAQuestion />
               </TabPane>
               <TabPane tab="NEW CONNECTIONS" key="3">
                <NewConnectionsCard />

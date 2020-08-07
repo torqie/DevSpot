@@ -53,6 +53,7 @@ app.use(cors({
 require('./routes/auth.routes')(app, passport);
 require('./routes/user.routes')(app, passport);
 require('./routes/posts.routes')(app, passport);
+require('./routes/questions.routes')(app, passport);
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
@@ -81,7 +82,7 @@ app.get("/", authCheck, (req, res) => {
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
 
 app.listen(PORT, () => {
