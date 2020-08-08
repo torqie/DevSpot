@@ -13,9 +13,11 @@ export default class TechNewsFeed extends Component {
 
     componentDidMount() {
         axios
-            .get("https://bing-news-search1.p.rapidapi.com/news?safeSearch=Off&category=Technology&rapidapi-key=" + process.env.REACT_APP_BING_NEWS_SEARCH_API_KEY)
-            //"http://newsapi.org/v2/everything?q=development&sources=the-next-web&language=en&sortBy=popularity&apiKey=" + process.env.REACT_APP_NEWS_API_KEY
-
+            .get("https://api.cognitive.microsoft.com/bing/v7.0/news", {
+                headers: {
+                    "Ocp-Apim-Subscription-Key": "6e7abf2ecfcf4a24b4ad51e5dd47a617"
+                }
+            })
             .then(response => {
                 this.setState({
                     articles: response.data.value,
@@ -32,21 +34,22 @@ export default class TechNewsFeed extends Component {
         console.log("articles", this.state.articles);
         return (
             <Card id="techcard">
-            <Skeleton loading={this.state.loading} active avatar>
-            <h2 id="techtitle">Latest Tech News</h2>
-                <Carousel autoplay autoplaySpeed={15000} dots={false}>
-                    {!loading && this.state.articles.map((article, index) => {
-                        return (
-                            <List.Item key={index}>
-                                <List.Item.Meta
-                                    title={!loading && (<a href={article.url}>{article.name}</a>)}
-                                    avatar={!loading && (<Avatar size={120} shape="square" src={article.image.thumbnail.contentUrl} />)}
-                                    description={!loading && (article.description)}
-                                />
-                        </List.Item>
-                    )})}
-                </Carousel>
-            </Skeleton>
+                <Skeleton loading={this.state.loading} active avatar>
+                    <h2 id="techtitle">Latest Tech News</h2>
+                    <Carousel autoplay autoplaySpeed={15000} dots={false}>
+                        {!loading && this.state.articles.map((article, index) => {
+                            return (
+                                <List.Item key={index}>
+                                    <List.Item.Meta
+                                        title={!loading && (<a href={article.url}>{article.name}</a>)}
+                                        avatar={!loading && (<Avatar size={120} shape="square" src={article.image.thumbnail.contentUrl} />)}
+                                        description={!loading && (article.description)}
+                                    />
+                                </List.Item>
+                            )
+                        })}
+                    </Carousel>
+                </Skeleton>
             </Card>
         )
     }

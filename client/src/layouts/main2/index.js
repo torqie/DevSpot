@@ -34,7 +34,6 @@ class MainLayout2 extends Component {
             minHeight: 280,
           }}
         >
-
           {this.props.children}
         </Content>
 
@@ -45,7 +44,6 @@ class MainLayout2 extends Component {
             </Footer>
           </div>
         </div>
-
       </Layout>
     );
   }
