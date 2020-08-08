@@ -20,13 +20,12 @@ class Profile extends Component {
             user: response.data,
             posts: response.data.posts,
             loading: false
-          },() => {
-            API.addViewToUser(response.data._id).then(response => {
-              console.log("456456456456456:", response.data);
-              this.setState({viewCount: response.data});
-              this.updateViewsCount(response.data.count);
-            }).catch(error => { console.log(error) });
-          })
+          });
+      API.addViewToUser(response.data._id).then(response => {
+        console.log("456456456456456:", response.data);
+        this.setState({viewCount: response.data});
+        this.updateViewsCount(response.data);
+      }).catch(error => { console.log(error) });
         }).catch(error => {
           console.log("Error getting users profile.", error);
         });
