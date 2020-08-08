@@ -65,15 +65,15 @@ class App extends Component {
 						<Layout theme="dark" style={{minHeight: "100vh"}}>
 							<Header theme="dark">
 								<div className="logo" style={{float: "left"}}>
-									<img src={Logo} alt="Dev Spot Logo" style={{maxHeight: "30px"}} />
+									<img src={Logo} alt="Dev Spot Logo" style={{maxHeight: "25px"}} />
 								</div>
-								<Navigation logout={this._logout} />
+								<Navigation logout={this._logout} user={this.state.user} />
 							</Header>
-							<Content style={{ marginTop: 40, padding: '0 40px', minHeight: '100vh',}}>
+							<Content style={{ marginTop: "40px", padding: '0 40px',}}>
 								<Route exact path="/" render={() => <HomePage user={user} />} />
 								<Route exact path="/profile/:id" render={(props) => <ProfilePage user={user} {...props} />} />
 							</Content>
-							<Footer  style={{ textAlign: 'center' }}>Designed and Developed by the AJAYS. T Freaking M</Footer>
+							<Footer style={{ textAlign: 'center' }}>Designed and Developed by the A and the Jay's. T Freaking M</Footer>
 					</Layout>
 				)}
 			</div>

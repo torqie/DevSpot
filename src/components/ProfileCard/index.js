@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Avatar, Col, Row, Statistic, Card, Divider } from "antd";
-import axios from "axios";
 import { Link } from "react-router-dom/";
 
 class ProfileCard extends Component {
@@ -41,7 +40,7 @@ class ProfileCard extends Component {
               { !loading && <Statistic title="Connections" value={0} /> }
             </Col>
             <Col span={8} style={{textAlign: "center"}} >
-              { !loading &&  <Statistic title="Views" value={0} /> }
+              { !loading &&  <Statistic title="Views" value={this.props.totalViews} /> }
             </Col>
           </Row>
           <Divider />

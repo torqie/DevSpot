@@ -20,6 +20,8 @@ export default {
   // Retrieve user by login.
   getUserByLogin: function(login) { return axios.get(`/api/users/find-by-login/${login}`) },
 
+  addViewToUser: function(id) { return axios.get(`/api/users/${id}/add-view`)},
+
   // Connections
   // =============================================================
 

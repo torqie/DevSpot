@@ -10,7 +10,8 @@ import TechNewsFeed from "../../components/TechNews";
 class Home extends Component {
 
     state = {
-      totalPosts: 0
+      totalPosts: 0,
+      totalViews: 0
     };
 
 
@@ -26,9 +27,9 @@ class Home extends Component {
   loadTotalPosts = (user) => {
 
     API.getUser(user._id).then(response => {
-      console.log("Asdfasdfsdf", response.data.posts.length);
       this.setState({
-        totalPosts: response.data.posts.length
+        totalPosts: response.data.posts.length,
+        totalViews: response.data.views,
       });
     }).catch(error => {
       console.log("Error get post Count", error);
@@ -41,13 +42,13 @@ class Home extends Component {
       return (
         <div className="Home">
           <Row gutter={{xs: 8, sm: 16, md: 24, lg: 32}}>
-            <Col span={24} md={{span: 6}}>
-              <ProfileCard user={this.props.user} totalPosts={this.state.totalPosts}/>
+            <Col span={24} md={{span: 8}} lg={{span: 8}} xl={{span: 6}} style={{marginBottom: "20px"}}>
+              <ProfileCard user={this.props.user} totalPosts={this.state.totalPosts} totalViews={this.state.totalViews}/>
             </Col>
-            <Col span={24} md={{span: 12}}>
+            <Col span={24} md={{span: 16}} xl={{span: 12}}>
               <WhatToDoCard user={this.props.user} updatePostCount={this.loadTotalPosts}/>
             </Col>
-            <Col span={0} md={{span: 6}}>
+            <Col span={0} xl={{span: 6}}>
               <TechNewsFeed />
             </Col>
           </Row>
@@ -57,8 +58,6 @@ class Home extends Component {
       return null;
     }
   }
-
-
 }
 
 export default Home

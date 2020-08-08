@@ -9,7 +9,8 @@ class Profile extends Component {
   state = {
     loading: true,
     user: {},
-    posts: {}
+    posts: {},
+    viewCount: 2
   };
 
   componentDidMount() {
@@ -19,11 +20,23 @@ class Profile extends Component {
             user: response.data,
             posts: response.data.posts,
             loading: false
+          },() => {
+            API.addViewToUser(response.data._id).then(response => {
+              console.log("456456456456456:", response.data);
+              this.setState({viewCount: response.data});
+              this.updateViewsCount(response.data.count);
+            }).catch(error => { console.log(error) });
           })
         }).catch(error => {
           console.log("Error getting users profile.", error);
         });
   }
+
+  updateViewsCount = count => {
+    this.props.updateViewsCount(count)
+  };
+
+
 
   render() {
     const { user, loading, posts } = this.state;
@@ -31,7 +44,7 @@ class Profile extends Component {
         <>
           <Row gutter={{xs: 8, sm: 16, md: 24, lg: 32}}>
             <Col span={24} md={{span: 8}}><h1>My Profile</h1>
-              <ProfileCard user={this.props.user} totalPosts={this.state.posts.length} />
+              <ProfileCard user={this.props.user} totalPosts={this.state.posts.length} totalViews={this.state.viewCount} />
             </Col>
             <Col span={24} md={{span: 16}}><h1>My Posts</h1>
               {this.state.posts.length > 0 ? (

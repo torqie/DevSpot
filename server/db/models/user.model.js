@@ -7,7 +7,8 @@ const userSchema = new Schema({
   google: {},
   github: {},
   friends: [{ type: Schema.Types.ObjectId, ref: 'Friend' }],
-  posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }]
+  posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
+  views: Number,
 });
 
 const User = mongoose.model("User", userSchema);

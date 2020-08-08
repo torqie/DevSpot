@@ -34,6 +34,15 @@ exports.one = async (req, res) => {
   return res.json(user);
 };
 
+// Add a view to the users profile
+exports.addViewToUser = async (req, res) => {
+  const user = await db.User.findOneAndUpdate(req.body.id, {
+  $inc: {
+    views: 1
+  }
+  }, {new:true});
+  return res.status(200).json(user.views)
+};
 // Update a user.
 exports.updateTheme = async (req, res) => {
   const user = await db.User.findOneAndUpdate(req.body.id, {

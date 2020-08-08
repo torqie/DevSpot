@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Card, Carousel, Skeleton } from "antd";
+import { Card, Carousel, Divider, Skeleton } from "antd";
 import List from "antd/es/list";
 import Avatar from "antd/es/avatar";
 import "./style.css"
@@ -14,8 +14,6 @@ export default class TechNewsFeed extends Component {
 
     componentDidMount() {
         API.getTechNews().then(response => {
-            console.log("technews: ", response);
-
             this.setState({
                 articles: response.data.value,
                 loading: false
@@ -29,7 +27,7 @@ export default class TechNewsFeed extends Component {
         return (
             <Card id="techcard">
             <Skeleton loading={this.state.loading} active avatar>
-            <h2 id="techtitle">Latest Tech News</h2>
+                <Divider>Latest Tech News</Divider>
                 <Carousel autoplay autoplaySpeed={15000} dots={false}>
                     {!loading && this.state.articles.map((article, index) => {
                         return (
