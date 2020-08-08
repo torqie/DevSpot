@@ -3,6 +3,7 @@ import { Card, Avatar, Col, Row, Space, Menu, Dropdown } from "antd";
 import { FaRegCommentAlt, FaEllipsisH, } from "react-icons/fa";
 import API from "../../../../utils/API"
 import Answers from "./Answer"
+import { Link } from "react-router-dom";
 
 class QuestionCard extends Component {
 
@@ -56,7 +57,17 @@ class QuestionCard extends Component {
           <Card
               bodyStyle={{ padding: 0 }}
               style={{ marginBottom: "20px" }}
-              title={[<Avatar size="large" src={question.author.github.avatar_url} style={{ marginRight: "10px" }} />, question.author.name]}
+              title={[
+                <Link to={`/profile/${question.author.login}`}>
+                  <Avatar size="large" src={question.author.github.avatar_url} style={{marginRight: "10px"}} />
+                </Link>,
+                <Link to={`/profile/${question.author.login}`} style={{color:"#f6f6f6"}}>
+                  {question.author.name}
+                </Link>,
+                <Link to={`/profile/${question.author.login}`}>
+                  <span style={{color:"#5b5b5b", fontSize: ".75rem"}}>{` (@${question.author.login})`}</span>
+                </Link>
+              ]}
               extra={
                 <Dropdown overlay={
                   <Menu>

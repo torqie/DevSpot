@@ -4,6 +4,7 @@ import { FaRegCommentAlt ,FaRegThumbsDown, FaThumbsDown, FaRegThumbsUp, FaThumbs
 import "./style.less"
 import API from "../../../../utils/API"
 import PostComments from "./Comment"
+import { Link } from "react-router-dom";
 
 class NewsFeedCard extends Component {
 
@@ -111,7 +112,17 @@ class NewsFeedCard extends Component {
           <Card
               bodyStyle={{padding: 0}}
               style={{marginBottom: "20px"}}
-              title={[<Avatar size="large" src={post.author.github.avatar_url} style={{marginRight: "10px"}} />, post.author.name]}
+              title={[
+                <Link to={`/profile/${post.author.login}`}>
+                  <Avatar size="large" src={post.author.github.avatar_url} style={{marginRight: "10px"}} />
+                </Link>,
+                <Link to={`/profile/${post.author.login}`} style={{color:"#f6f6f6"}}>
+                  {post.author.name}
+                </Link>,
+                <Link to={`/profile/${post.author.login}`}>
+                  <span style={{color:"#5b5b5b", fontSize: ".75rem"}}>{` (@${post.author.login})`}</span>
+                </Link>
+              ]}
               extra={
                 <Dropdown overlay={
                   <Menu>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Comment, Avatar, Form, Button, List, Input } from 'antd';
+import { Comment, Avatar, Form, Button, List, Input, Divider } from "antd";
 import API from '../../../../../utils/API'
+import { Link } from "react-router-dom";
 
 const { TextArea } = Input;
 
@@ -24,11 +25,14 @@ const AnswerList = ({ answers }) => (
         header={`${answers.length} ${answers.length > 1 ? 'replies' : 'reply'}`}
         itemLayout="horizontal"
         renderItem={answer =>
+            <>
             <Comment
-                author={<a>{answer.author.name}</a>}
-                avatar={<a><Avatar src={answer.author.github.avatar_url} alt={answer.author.name} /></a>}
+                author={<Link to={`/profile/${answer.author.login}`}>{answer.author.name} <span style={{color:"#5b5b5b", fontSize: ".75rem"}}>{` (@${answer.author.login})`}</span></Link>}
+                avatar={<Link to={`/profile/${answer.author.login}`}><Avatar src={answer.author.github.avatar_url} alt={answer.author.name} /></Link>}
                 content={<p>{answer.content}</p>}
             />
+            <Divider dashed />
+            </>
         }
     />
 );
@@ -97,7 +101,7 @@ class Answer extends Component {
     const { user } = this.props;
 
     return (
-        <div  style={{backgroundColor: "#292929", padding: "0 20px", marginTop: "-20px"}}>
+        <div  style={{padding: "0 20px", margin: "-20px 0 00px 0"}}>
           {answers.length > 0 && <AnswerList answers={answers} />}
 
           <Comment

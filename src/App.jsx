@@ -65,7 +65,10 @@ class App extends Component {
 						<Layout theme="dark" style={{minHeight: "100vh"}}>
 							<Header theme="dark">
 								<div className="logo" style={{float: "left"}}>
-									<img src={Logo} alt="Dev Spot Logo" style={{maxHeight: "25px"}} />
+									<Link to="/">
+										<img src={Logo} alt="Dev Spot Logo" style={{maxHeight: "25px"}} />
+									</Link>
+
 								</div>
 								<Navigation logout={this._logout} user={this.state.user} />
 							</Header>

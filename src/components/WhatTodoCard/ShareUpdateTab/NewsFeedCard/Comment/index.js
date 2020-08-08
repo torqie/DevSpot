@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Comment, Avatar, Form, Button, List, Input } from 'antd';
+import { Comment, Avatar, Form, Button, List, Input, Divider } from "antd";
 import API from '../../../../../utils/API'
+import { Link } from "react-router-dom";
 
 const { TextArea } = Input;
 
@@ -24,11 +25,14 @@ const CommentList = ({ comments }) => (
         header={`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`}
         itemLayout="horizontal"
         renderItem={comment =>
+            <>
             <Comment
-              author={<a>{comment.author.name}</a>}
-              avatar={<a><Avatar src={comment.author.github.avatar_url} alt={comment.author.name} /></a>}
+              author={<Link to={`/profile/${comment.author.login}`}>{comment.author.name} <span style={{color:"#5b5b5b", fontSize: ".75rem"}}>{` (@${comment.author.login})`}</span></Link>}
+              avatar={<Link to={`/profile/${comment.author.login}`}><Avatar src={comment.author.github.avatar_url} alt={comment.author.name} /></Link>}
               content={<p>{comment.content}</p>}
             />
+            <Divider dashed />
+            </>
         }
     />
 );

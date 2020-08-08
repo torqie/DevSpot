@@ -36,12 +36,12 @@ class WhatToDoCard extends Component {
             <TabPane tab="Q & A" key="2" >
               <NewQuestionsCard user={this.props.user} />
             </TabPane>
-            <TabPane tab="NEW CONNECTIONS" key="3">
-              <NewConnectionsCard user={this.props.user} />
-            </TabPane>
-            <TabPane tab="FIND A JOB" key="4">
-              <Empty />
-            </TabPane>
+            {/*<TabPane tab="NEW CONNECTIONS" key="3">*/}
+            {/*  <NewConnectionsCard user={this.props.user} />*/}
+            {/*</TabPane>*/}
+            {/*<TabPane tab="FIND A JOB" key="4">*/}
+            {/*  <Empty />*/}
+            {/*</TabPane>*/}
           </Tabs>
         </div>
     );

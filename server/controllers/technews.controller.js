@@ -3,7 +3,7 @@ const axios = require('axios');
 // Get Tech News
 exports.all = async (req, res) => {
   axios
-      .get("https://api.cognitive.microsoft.com/bing/v7.0/news", {
+      .get("https://api.cognitive.microsoft.com/bing/v7.0/news?category=Technology&mkt=en-us", {
         headers: {
           "Ocp-Apim-Subscription-Key": process.env.TECH_NEWS_API_KEY
         }
