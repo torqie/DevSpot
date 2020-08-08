@@ -1,0 +1,56 @@
+{
+  "name": "react-template",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@craco/craco": "^5.6.4",
+    "antd": "^4.5.2",
+    "axios": "^0.19.2",
+    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
+    "connect-mongo": "^1.3.2",
+    "craco-less": "^1.17.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "express-session": "^1.15.4",
+    "mongoose": "^4.11.4",
+    "morgan": "^1.8.2",
+    "passport": "^0.3.2",
+    "passport-github": "^1.1.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-icons": "^3.10.0",
+    "react-router-dom": "^5.2.0",
+    "@ant-design/icons": "latest",
+    "react-particles-js": "^3.3.0"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "react-scripts": "^3.4.1"
+  },
+  "scripts": {
+    "start": "export NODE_ENV=\"production\" && node server/server.js",
+    "build": "craco build",
+    "test": "craco test --env=jsdom",
+    "eject": "craco eject",
+    "dev": "concurrently \"craco start\" \"nodemon server/server.js\"",
+    "prod": "export NODE_ENV=\"production\" && nodemon server/server.js"
+  },
+  "proxy": "http://localhost:3001",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
