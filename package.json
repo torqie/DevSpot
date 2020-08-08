@@ -37,6 +37,7 @@
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-github": "^1.1.0",
-    "passport-github2": "^0.1.12"
+    "passport-github2": "^0.1.12",
+    "react-particles-js": "^3.3.0"
   }
 }

@@ -1,10 +1,14 @@
 import React, { Component } from "react"
 import axios from 'axios';
+import { Col, Row, } from "antd";
+import ProfileCard from "../../components/ProfileCard";
+import NewsFeedCard from "../../components/NewsFeedCard";
 
 class Profile extends Component {
   state = {
     loading: true,
     user: {},
+    posts: {}
   };
 
   componentDidMount() {
@@ -19,14 +23,37 @@ class Profile extends Component {
       .catch(error => {
         console.log("Error getting users profile.", error);
       });
+      axios
+      .get('/api/posts/')
+      .then(response => {
+        this.setState({
+          posts: response.data,
+          loading: false
+        })
+      })
+      .catch(error => {
+        console.log("Error getting users profile.", error);
+      });
+      
   }
+
 
   render() {
     const { user, loading } = this.state;
     return (
         <>
-          <h1>{!loading && user.name}</h1>
-          <h1>{!loading && user.login}</h1>
+          <Row gutter={{xs: 8, sm: 16, md: 24, lg: 32}}>
+            <Col span={24} md={{span: 8}}><h1>My Profile</h1>
+          <ProfileCard totalPosts={this.state.posts.length} />
+            </Col>
+            <Col span={24} md={{span: 16}}><h1>My Posts</h1>
+          {this.state.posts.length > 0 ? (
+            this.state.posts.map(post => {
+              return <NewsFeedCard post = {post} />
+            })
+          ): null }
+          </Col>
+          </Row>
         </>
     );
   }
