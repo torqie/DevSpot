@@ -26,7 +26,7 @@ const Footer = () => {
         <>
             <div className="footer">
                 <section className="rc-footer-columns">
-                    <Row justify="center" style={{ textAlign: "left" }}>
+                    <Row justify="center">
                         <Col span={8}>
                             <ul className="list-unstyled">
                                 <h2 className="header">
@@ -104,15 +104,16 @@ const Footer = () => {
 
                     </Row>
                     {/* Column1 */}
+                    
                 </section>
-                <br></br>
-                <div className="col terms" >
-                    <p className="col-sm">
-                        &copy;{new Date().getFullYear()} Devspot  |  All rights reserved  |  Terms of service  |  Privacy
-                    </p>
-                </div>
 
             </div>
+                <br className="break"></br>
+                    <div className="col terms" >
+                        <p className="col-sm">
+                            &copy;{new Date().getFullYear()} Devspot  |  All rights reserved  |  Terms of service  |  Privacy
+                        </p>
+                    </div>
 
         </>
     )

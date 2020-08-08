@@ -5,7 +5,7 @@
 
 .footer{
     margin-top: 1rem;
-    padding: 1rem;
+    padding: 0rem;
     background-color: rgb(24, 24, 24);
     position: relative;
     bottom: 0;
@@ -13,22 +13,30 @@
     text-align: center;
     width: 100%;
     color: white;
-    padding-top: 3em;
+    padding-top: 1rem;
     font-size: 18px;
-    line-height: 35px;
+    line-height: 30px;
     border-top: solid #663399;
+    border-bottom: solid #663399;
     
-    
-
   }
+
+  .terms {
+    text-align: center;
+    margin-top: -15px;
+}
 
 ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    margin: -1;
+    padding-bottom: -1;
   }
 
-.terms {
-    border-top: solid #663399;
+.break {
+  padding-top: -1;
 }
 
+.list-unstyled {
+  text-align: justify;
+  text-align: center;
+}
