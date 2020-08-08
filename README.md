@@ -16,12 +16,15 @@ _**DevSpot**_ was an idea that was created within our group with the purpose of 
 * Express.js
 * React.js
 * Node.js
+* Mongoose
+* Passport
+* BCrypt
 * _Particles_
 * _Ant Design_
 
 <div align="center">
 
-![A and the J's](https://torqie/DevSpot/_screenshot/AandtheJs.png)
+![A and the J's](https://github.com/torqie/DevSpot/blob/master/_screenshot/AandtheJs.png)
 
 ### Meet A and the J's!
 [Aaron Dunn](https://www.linkedin.com/in/k-aaron-dunn/)
