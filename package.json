@@ -30,7 +30,7 @@
     "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "latest",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-session": "^1.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.9.24",
